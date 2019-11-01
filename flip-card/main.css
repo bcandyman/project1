@@ -20,6 +20,10 @@ body{
    
 }
 
+.container{
+    margin-top:0;
+}
+
 .background {
   background: url(assets/css/iStock-917227876.png) no-repeat center center fixed; 
   background-size: cover;
@@ -66,12 +70,13 @@ body{
 #pre{
     height: 30px;
     width: 100px;
-    border: 2px solid gray;
+    border: 1px solid gray;
     font-family: arial;
     font-size: 15px;
     color:gray;
     text-align: center;
     line-height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 #pre:hover{
@@ -80,12 +85,13 @@ body{
 #nex{
     height: 30px;
     width: 100px;
-    border: 2px solid gray;
+    border: 1px solid gray;
     font-family: arial;
     font-size: 15px;
     color:gray;
     text-align: center;
     line-height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
   
 }
 #nex:hover{
@@ -200,7 +206,7 @@ body{
 .date2{
     color:white;
     position: absolute;
-    Top: 3%;
+    Top: 2%;
     left: 26%;
     font-size:3.3vh;
     text-align: center;
