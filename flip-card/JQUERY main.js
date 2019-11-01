@@ -1,7 +1,10 @@
 $(document).ready(function () {
+    $("#donut").toggleClass("rotate-in-2-cw");
+
     flag = 1;
     $("#nex").click(function () {
         if (flag == 0) {
+
             $("#side1").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
@@ -48,6 +51,7 @@ $(document).ready(function () {
             $("#side1").css("transform", "translateX(150px) scale(1.25)");
             flag = 0;
         }
+
         else if (flag == 2) {
             $("#side1").css("z-index", "999");
             $("#side2").css("z-index", "9");
@@ -58,4 +62,41 @@ $(document).ready(function () {
             flag = 1;
         }
     });
+
+
+
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work', 11],
+            ['Eat', 2],
+            ['Commute', 2],
+            ['Watch TV', 2],
+            ['Sleep', 7]
+        ]);
+
+        var options = {
+            backgroundColor: 'transparent',
+            pieHole: 0.92,
+            colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+            pieSliceBorderColor: "#5A5A5A",
+            outlineColor: "0",
+            pieSliceBorderColor: "transparent",
+
+            pieSliceTextStyle: {
+                color: 'none'
+            },
+
+            legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        chart.draw(data, options);
+    }
+
 });
