@@ -1,10 +1,10 @@
 $(document).ready(function () {
+
     $("#donut").toggleClass("rotate-in-2-cw");
 
     flag = 1;
     $("#nex").click(function () {
         if (flag == 0) {
-
             $("#side1").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
@@ -27,8 +27,8 @@ $(document).ready(function () {
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side1").css("transform", "translateX(150px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-200px) scale(1.25)");
+            $("#side1").css("transform", "translateX(200px) scale(1.25)");
             flag = 0;
         }
     });
@@ -38,8 +38,8 @@ $(document).ready(function () {
             $("#side2").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side3").css("transform", "translateX(0px) scale(1.5)");
-            $("#side1").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side2").css("transform", "translateX(150px) scale(1.25)");
+            $("#side1").css("transform", "translateX(-200px) scale(1.25)");
+            $("#side2").css("transform", "translateX(200px) scale(1.25)");
             flag = 2;
         }
         else if (flag == 1) {
@@ -47,8 +47,8 @@ $(document).ready(function () {
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side1").css("transform", "translateX(150px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-200px) scale(1.25)");
+            $("#side1").css("transform", "translateX(200px) scale(1.25)");
             flag = 0;
         }
 
@@ -63,7 +63,13 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '#report', function () {
+        $("#slide1").toggleClass("flip-horizontal-bottom");
 
+
+
+
+    });
 
 
     google.charts.load('current', { 'packages': ['corechart'] });
@@ -72,12 +78,12 @@ $(document).ready(function () {
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Work', 11],
-            ['Eat', 2],
-            ['Commute', 2],
-            ['Watch TV', 2],
-            ['Sleep', 7]
+            ['Food', 'Total per Day'],
+            ['Water', 11],
+            ['Carbs', 2],
+            ['Fats', 2],
+            ['Fiber', 2],
+            ['Proteins', 7]
         ]);
 
         var options = {
@@ -95,7 +101,7 @@ $(document).ready(function () {
             legend: 'none'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
         chart.draw(data, options);
     }
 
