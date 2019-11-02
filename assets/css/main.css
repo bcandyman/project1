@@ -21,13 +21,14 @@ html, body{
 }
 
 .background {
-  background: url(assets/css/iStock-917227876.png) no-repeat center center fixed; 
+  background: url(../images/iStock-917227876.png) no-repeat center center fixed; 
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   width:100%;
   height:100%;
+  padding:2vmin;
   margin:auto;
   background-color: black;
   position: relative;
@@ -393,20 +394,6 @@ html, body{
 
 .container{
     margin-top:0;
-}
-
-.background {
-  background: url(assets/css/iStock-917227876.png) no-repeat center center fixed; 
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  width:100%;
-  height:100%;
-  padding:2vmin;
-  margin:auto;
-  background-color: black;
-  position: relative;
 }
 
 .title{
