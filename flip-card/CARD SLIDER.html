@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="jquery-1.10.2.min.js"></script>
     <script src="JQUERY%20main.js"></script>
     <link
@@ -12,14 +14,14 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-
     <link href="main.css" rel="stylesheet" />
 
 </head>
 
 <body>
-    <div class="background">
-        <div id="main" class="container">
+    <div id="background" class="background">
+        <div id="main" class="flex-container">
+
             <div id="side1" class="flip-card">
                 <div id="card">
                     <div class="front">
@@ -27,7 +29,7 @@
                             <span class="date">Today</span>
                             <span id="day" class="weekday">FRI</span></p>
                         <p class="sign" id="user-sign">TAURUS</p>
-                        <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure
+                        <p class="inside" id="horoscope">Even if you're not one hundred percent sure
                             of yourself,
                             take a leap
                             forward today!</p>
@@ -49,7 +51,7 @@
                     <span class="date2">Tomorrow</span>
                     <span id="day2" class="weekday">FRI</span></p>
                 <p class="sign" id="user-sign2">TAURUS</p>
-                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
                     yourself,
                     take a leap
                     forward today!</p>
@@ -62,7 +64,7 @@
                     <span class="date2">Yesterday</span>
                     <span id="day2" class="weekday">Thurs</span></p>
                 <p class="sign" id="user-sign2">TAURUS</p>
-                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
                     yourself,
                     take a leap
                     forward today!</p>
@@ -73,14 +75,16 @@
         </div>
         <div class="nav-wrapper">
             <div id="pre">
-                PREVIOUS
+                &#8249
             </div>
             <div id="nex">
-                NEXT
+                &#8250
             </div>
         </div>
-        <a class="title">WAYE-T<a>
-    </div>
+        <div>
+            <a class="title">WAYE-T<a>
+        </div>
+
 </body>
 
 </html>
