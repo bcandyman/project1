@@ -2,16 +2,10 @@ $(document).ready(function () {
 
     $("#donut").toggleClass("rotate-in-2-cw");
 
-    // $("#card").flip({
-    //     trigger: 'click'
-    // });
     $("#card").flip({
-        trigger: 'manual'
+        trigger: 'click'
     });
 
-    $("#search").click(function () {
-        $("#card").flip(true);
-    });
     //////funtion for creating carousel //////////////////////////////
 
 
@@ -109,7 +103,7 @@ $(document).ready(function () {
             legend: 'none'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
         chart.draw(data, options);
     }
 
