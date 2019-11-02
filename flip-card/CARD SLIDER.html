@@ -1,7 +1,6 @@
 <html>
 
 <head>
-    <link href="main.css" rel="stylesheet" />
     <script src="jquery-1.10.2.min.js"></script>
     <script src="JQUERY%20main.js"></script>
     <link
@@ -11,55 +10,68 @@
         href="https://fonts.googleapis.com/css?family=Abel|Comfortaa|Montserrat|Pathway+Gothic+One|Quicksand|Roboto|Yeseva+One&display=swap"
         rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
+    <link href="main.css" rel="stylesheet" />
 
 </head>
 
 <body>
     <div class="background">
-        <a class="title">TULIP</a>
         <div id="main" class="container">
-            <div id="side1" class="data-side">
-                <p><span class="day" id="today">11 | 01</span>
-                    <span class="date">Today</span>
-                    <span id="day" class="weekday">FRI</span></p>
-                <p class="sign" id="user-sign">TAURUS</p>
-                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of yourself,
-                    take a leap
-                    forward today!</p>
-                <div id="donut_single" class="donut"></div>
-                <div class="inside-value">385</div>
-                <div class="inside-title">Daily Calories</div>
-                <div class="text">REPORT</div>
+            <div id="side1" class="flip-card">
+                <div id="card">
+                    <div class="front">
+                        <p><span class="day" id="today">11 | 01</span>
+                            <span class="date">Today</span>
+                            <span id="day" class="weekday">FRI</span></p>
+                        <p class="sign" id="user-sign">TAURUS</p>
+                        <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure
+                            of yourself,
+                            take a leap
+                            forward today!</p>
+                        <p id="donut_single" class="donut"></p>
+                        <p class="inside-value">385</p>
+                        <p class="inside-title">Daily Calories</p>
+                        <p class="search">SEARCH</p>
+                    </div>
+                    <div class="back">
+                        <h2>Search</h2>
+                        <input></inpu>
+                        <button type="submit" class="btn btn-dark" id="submit">Submit</button>
+                        <p></p>
+                    </div>
+                </div>
             </div>
             <div id="side2">
                 <p><span class="day" id="tomorrow">11 | 02</span>
                     <span class="date2">Tomorrow</span>
                     <span id="day2" class="weekday">FRI</span></p>
                 <p class="sign" id="user-sign2">TAURUS</p>
-                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of yourself,
+                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                    yourself,
                     take a leap
                     forward today!</p>
                 <div id="donut_single2" class="donut"></div>
                 <div class="inside-value">000</div>
                 <div class="inside-title">Daily Calories</div>
-                <div class="text">REPORT</div>
             </div>
             <div id="side3">
                 <p><span class="day" id="tomorrow">10 | 31</span>
                     <span class="date2">Yesterday</span>
                     <span id="day2" class="weekday">Thurs</span></p>
                 <p class="sign" id="user-sign2">TAURUS</p>
-                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of yourself,
+                <p align="center" class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                    yourself,
                     take a leap
                     forward today!</p>
                 <div id="donut_single3" class="donut"></div>
                 <div class="inside-value">000</div>
                 <div class="inside-title">Daily Calories</div>
-                <div class="text">REPORT</div>
             </div>
         </div>
-        <div class="flex-container nav-wrapper">
+        <div class="nav-wrapper">
             <div id="pre">
                 PREVIOUS
             </div>
@@ -67,6 +79,7 @@
                 NEXT
             </div>
         </div>
+        <a class="title">WAYE-T<a>
     </div>
 </body>
 

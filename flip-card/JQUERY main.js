@@ -2,6 +2,11 @@ $(document).ready(function () {
 
     $("#donut").toggleClass("rotate-in-2-cw");
 
+    $("#card").flip({
+        trigger: 'click'
+    });
+
+
     flag = 1;
     $("#nex").click(function () {
         if (flag == 0) {
@@ -9,8 +14,8 @@ $(document).ready(function () {
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
             $("#side1").css("transform", "translateX(0px) scale(1.5)");
-            $("#side2").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side3").css("transform", "translateX(150px) scale(1.25)");
+            $("#side2").css("transform", "translateX(-100px) scale(1.25)");
+            $("#side3").css("transform", "translateX(100px) scale(1.25)");
             flag = 1;
         }
         else if (flag == 1) {
@@ -18,8 +23,8 @@ $(document).ready(function () {
             $("#side2").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side3").css("transform", "translateX(0px) scale(1.5)");
-            $("#side1").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side2").css("transform", "translateX(150px) scale(1.25)");
+            $("#side1").css("transform", "translateX(-100px) scale(1.25)");
+            $("#side2").css("transform", "translateX(100px) scale(1.25)");
             flag = 2;
         }
         else if (flag == 2) {
@@ -27,8 +32,8 @@ $(document).ready(function () {
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-200px) scale(1.25)");
-            $("#side1").css("transform", "translateX(200px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-100px) scale(1.25");
+            $("#side1").css("transform", "translateX(100px) scale(1.25)");
             flag = 0;
         }
     });
@@ -38,8 +43,8 @@ $(document).ready(function () {
             $("#side2").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side3").css("transform", "translateX(0px) scale(1.5)");
-            $("#side1").css("transform", "translateX(-200px) scale(1.25)");
-            $("#side2").css("transform", "translateX(200px) scale(1.25)");
+            $("#side1").css("transform", "translateX(-100px) scale(1.25)");
+            $("#side2").css("transform", "translateX(100px) scale(1.25)");
             flag = 2;
         }
         else if (flag == 1) {
@@ -47,8 +52,8 @@ $(document).ready(function () {
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
             $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-200px) scale(1.25)");
-            $("#side1").css("transform", "translateX(200px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-100px) scale(1.25)");
+            $("#side1").css("transform", "translateX(100px) scale(1.25)");
             flag = 0;
         }
 
@@ -57,19 +62,13 @@ $(document).ready(function () {
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
             $("#side1").css("transform", "translateX(0px) scale(1.5)");
-            $("#side2").css("transform", "translateX(-150px) scale(1.25)");
-            $("#side3").css("transform", "translateX(150px) scale(1.25)");
+            $("#side2").css("transform", "translateX(-100px) scale(1.25)");
+            $("#side3").css("transform", "translateX(100px) scale(1.25)");
             flag = 1;
         }
     });
 
-    $(document).on('click', '#report', function () {
-        $("#slide1").toggleClass("flip-horizontal-bottom");
 
-
-
-
-    });
 
 
     google.charts.load('current', { 'packages': ['corechart'] });
