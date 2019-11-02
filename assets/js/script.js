@@ -6,6 +6,15 @@ $(document).ready(function () {
         trigger: 'click'
     });
 
+    $("#search").click(function () {
+        $("card").flip(false);
+    });
+
+    $("#close").click(function () {
+        $("card").flip(true);
+    });
+
+
     //////funtion for creating carousel //////////////////////////////
 
 
