@@ -52,7 +52,8 @@ body{
     transform: translateX(0px);
     transition: all .5s;
     background-color:  rgb(1, 49, 47);
-        border: 1px solid gray;
+        border: 1px solid rgb(70, 69, 69);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 }
@@ -66,6 +67,7 @@ body{
     transition: all .5s;
     background-color:  rgb(167, 167, 167);
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -73,11 +75,12 @@ body{
     height: 300px;
     width: 200px;
     position: absolute;
-    transform: translateX(-150px);
+    transform: translateX(-200px);
     z-index: 9;
-    border: 1px solid gray;
+        border: 1px solid rgb(70, 69, 69);
     transition: all .5s;
     background-color:  rgb(48, 58, 53);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
 
@@ -85,11 +88,12 @@ body{
     height: 300px;
     width: 200px;
     position: absolute;
-    transform: translateX(150px);
+    transform: translateX(200px);
     z-index: 9;
-    border: 1px solid gray;
+        border: 1px solid rgb(70, 69, 69);
     transition: all .5s;
     background-color:  rgb(48, 58, 53);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #pre{
     height: 30px;
