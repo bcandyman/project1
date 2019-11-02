@@ -6,6 +6,8 @@ $(document).ready(function () {
         trigger: 'click'
     });
 
+    //////funtion for creating carousel //////////////////////////////
+
 
     flag = 1;
     $("#nex").click(function () {
@@ -37,6 +39,7 @@ $(document).ready(function () {
             flag = 0;
         }
     });
+
     $("#pre").click(function () {
         if (flag == 0) {
             $("#side3").css("z-index", "999");
@@ -69,7 +72,7 @@ $(document).ready(function () {
     });
 
 
-
+    //////code for creating donut pie chart///////////////////////////////
 
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
