@@ -15,27 +15,27 @@ $(document).ready(function () {
             $("#side1").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
-            $("#side1").css("transform", "translateX(0px) scale(1.5)");
-            $("#side2").css("transform", "translateX(-50px) scale(1.25)");
-            $("#side3").css("transform", "translateX(50px) scale(1.25)");
+            $("#side1").css("transform", "translateX(0px) scale(1.25");
+            $("#side2").css("transform", "translateX(-40px) scale(1.0)");
+            $("#side3").css("transform", "translateX(40px) scale(1.0)");
             flag = 1;
         }
         else if (flag == 1) {
             $("#side3").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side1").css("z-index", "9");
-            $("#side3").css("transform", "translateX(0px) scale(1.5)");
-            $("#side1").css("transform", "translateX(-50px) scale(1.25)");
-            $("#side2").css("transform", "translateX(50px) scale(1.25)");
+            $("#side3").css("transform", "translateX(0px) scale(1.25)");
+            $("#side1").css("transform", "translateX(-40px) scale(1.0)");
+            $("#side2").css("transform", "translateX(40px) scale(1.0)");
             flag = 2;
         }
         else if (flag == 2) {
             $("#side2").css("z-index", "999");
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
-            $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-50px) scale(1.25");
-            $("#side1").css("transform", "translateX(50px) scale(1.25)");
+            $("#side2").css("transform", "translateX(0px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-40px) scale(1.0");
+            $("#side1").css("transform", "translateX(40px) scale(1.0)");
             flag = 0;
         }
     });
@@ -45,18 +45,18 @@ $(document).ready(function () {
             $("#side3").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side1").css("z-index", "9");
-            $("#side3").css("transform", "translateX(0px) scale(1.5)");
-            $("#side1").css("transform", "translateX(-50px) scale(1.25)");
-            $("#side2").css("transform", "translateX(50px) scale(1.25)");
+            $("#side3").css("transform", "translateX(0px) scale(1.25)");
+            $("#side1").css("transform", "translateX(-40px) scale(1.0)");
+            $("#side2").css("transform", "translateX(40px) scale(1.0)");
             flag = 2;
         }
         else if (flag == 1) {
             $("#side2").css("z-index", "999");
             $("#side3").css("z-index", "9");
             $("#side1").css("z-index", "9");
-            $("#side2").css("transform", "translateX(0px) scale(1.5)");
-            $("#side3").css("transform", "translateX(-50px) scale(1.25)");
-            $("#side1").css("transform", "translateX(50px) scale(1.25)");
+            $("#side2").css("transform", "translateX(0px) scale(1.25)");
+            $("#side3").css("transform", "translateX(-40px) scale(1.0)");
+            $("#side1").css("transform", "translateX(40px) scale(1.0");
             flag = 0;
         }
 
@@ -64,9 +64,9 @@ $(document).ready(function () {
             $("#side1").css("z-index", "999");
             $("#side2").css("z-index", "9");
             $("#side3").css("z-index", "9");
-            $("#side1").css("transform", "translateX(0px) scale(1.5)");
-            $("#side2").css("transform", "translateX(-50px) scale(1.25)");
-            $("#side3").css("transform", "translateX(50px) scale(1.25)");
+            $("#side1").css("transform", "translateX(0px) scale(1.25)");
+            $("#side2").css("transform", "translateX(-40px) scale(1.0)");
+            $("#side3").css("transform", "translateX(40px) scale(1.0)");
             flag = 1;
         }
     });
