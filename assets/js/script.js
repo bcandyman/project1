@@ -3,15 +3,15 @@ $(document).ready(function () {
     $("#donut").toggleClass("rotate-in-2-cw");
 
     $("#card").flip({
-        trigger: 'click'
+        trigger: 'manual'
     });
 
     $("#search").click(function () {
-        $("card").flip(false);
+        $("#card").flip(true);
     });
 
     $("#close").click(function () {
-        $("card").flip(true);
+        $("#card").flip(false);
     });
 
 
