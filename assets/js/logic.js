@@ -1,9 +1,22 @@
-// var searchTag = prompt("entery item: ");
+// declare variables
+var firebaseConfig = {
+    apiKey: "AIzaSyADKbhE6aoHk09vkJuHxIZ1ntqD0ND4lLA",
+    authDomain: "waye-t.firebaseapp.com",
+    databaseURL: "https://waye-t.firebaseio.com",
+    projectId: "waye-t",
+    storageBucket: "waye-t.appspot.com",
+    messagingSenderId: "346428803689",
+    appId: "1:346428803689:web:bd8036633443512c56f0f8",
+    measurementId: "G-KLHSX37FDS"
+  };
 var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
+var itemsToDatabase
 
-
+// initialize firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
 
 function populateFoodItems(objFood){
     //clear items returned by search
@@ -24,7 +37,6 @@ function populateFoodItems(objFood){
     }
 }
 
-
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
 $("#submit").on("click",function(){
@@ -34,7 +46,6 @@ $("#submit").on("click",function(){
     var foodSearch = $("#foodSearch").val()
     //numOfResults = the number of items the user would like returned
     var numOfResults = 5
-    console.log("foodSearch: " + foodSearch)
     
     $.ajax({
         url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=*&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
@@ -82,7 +93,17 @@ $(document).on("click", ".searched-item", function(){
 })
 
 $("#search").on("click",function(){
-    console.log("Hi")
     $(".selectedFoodItems").empty()
     $(".returnedFoodItems").empty()
 })
+
+
+$("#close").on("click",function(){
+    console.log("I did it!")
+})
+
+var day = moment().format("YYYYMMDD");
+console.log(day)
+// console.log(moment().format(20130208))
+console.log(moment().format())
+database.ref("userName").set({joinDate:day})
