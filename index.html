@@ -1,54 +1,122 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <link href="main.css" rel="stylesheet" />
-    <script src="jquery-1.10.2.min.js"></script>
-    <script src="JQUERY%20main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link
         href="https://fonts.googleapis.com/css?family=Arbutus+Slab|DM+Serif+Text|Libre+Baskerville|Neuton|Rufina&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Abel|Comfortaa|Montserrat|Pathway+Gothic+One|Quicksand|Roboto|Yeseva+One&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+
+    <link href="assets/css/main.css" rel="stylesheet" />
 
 </head>
 
 <body>
-    <div id="background">
-        <div id="main" class="flex-container wrapper">
-            <div id="side1" class="Data-Side">
-                <h2>Food Report</h2>
-                <table style="width:100%">
-                    <tr>
-                        <th>Proteins:</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                    </tr>
-                    <tr>
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td>
-                        <td>94</td>
-                    </tr>
-                </table>
+    <div id="background" class="background">
+        <div id="main" class="flex-container">
+            <div class="header">
+                <p></p>
+                <p></p>
+            </div>
+            <div id="side1">
+                <div id="card">
+                    <div class="front">
+                        <div class="wrapper">
+                            <p><span class="day" id="today">11 | 01</span>
+                                <span class="date">Today</span>
+                                <span id="day" class="weekday">FRI</span></p>
+                            <p class="sign" id="user-sign">TAURUS</p>
+                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                of yourself,
+                                take a leap
+                                forward today!</p>
+                            <p id="donut_single" class="donut"></p>
+                            <p class="inside-value">385</p>
+                            <p class="inside-title">Daily Calories</p>
+                            <p class="text" id="search">SEARCH</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <br>
+                        <input placeholder="Search">
+                        <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                        <p></p>
+                        <p class="text" id="close">Close</p>
+                    </div>
+                </div>
             </div>
             <div id="side2">
-                <img src="NEW%20YORK.jpg" height="100%" width="100%" />
+                <div id="card2">
+                    <div class="front">
+                        <div class="wrapper2">
+                            <p><span class="day" id="Yesterday">11 | 02</span>
+                                <span class="date2">Yesterday</span>
+                                <span id="day2" class="weekday">FRI</span></p>
+                            <p class="sign" id="user-sign2">TAURUS</p>
+                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                                yourself,
+                                take a leap
+                                forward today!</p>
+                            <div id="donut_single2" class="donut"></div>
+                            <div class="inside-value">000</div>
+                            <div class="inside-title">Daily Calories</div>
+                            <p class="text" id="entries1">ENTRIES</p>
+                        </div>
+                    </div>
+                    <div class="back">
+
+                        <p class="text" id="close2">Close</p>
+                    </div>
+                </div>
             </div>
             <div id="side3">
-                <img src="PARIS.jpg" height="100%" width="100%" />
+                <div id="card3">
+                    <div class="front">
+                        <div class="wrapper2">
+                            <p><span class="day" id="Tomorrow">11 | 02</span>
+                                <span class="date2">Tomorrow</span>
+                                <span id="day2" class="weekday">FRI</span></p>
+                            <p class="sign" id="user-sign2">TAURUS</p>
+                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
+                                yourself,
+                                take a leap
+                                forward today!</p>
+                            <div id="donut_single2" class="donut"></div>
+                            <div class="inside-value">000</div>
+                            <div class="inside-title">Daily Calories</div>
+                            <p class="text" id="entries2">ENTRIES</p>
+                        </div>
+                    </div>
+                    <div class="back">
+
+                        <p class="text" id="close3">Close</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex-container nav-wrapper">
+
+        <div class="nav-wrapper">
             <div id="pre">
-                PREVIOUS
+                &#8249
             </div>
             <div id="nex">
-                NEXT
+                &#8250
             </div>
         </div>
-    </div>
+        <div>
+            <a class="title">WAYE-T<a>
+        </div>
+
 </body>
 
 </html>
