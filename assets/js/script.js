@@ -1,10 +1,44 @@
 $(document).ready(function () {
 
-    $("#donut").toggleClass("rotate-in-2-cw");
+    $("#donut_single").toggleClass("rotate-in-2-cw");
 
     $("#card").flip({
-        trigger: 'click'
+        trigger: 'manual'
     });
+
+    $("#card2").flip({
+        trigger: 'manual'
+    });
+
+    $("#card3").flip({
+        trigger: 'manual'
+    });
+
+    $("#search").click(function () {
+        $("#card").flip(true);
+    });
+
+    $("#close").click(function () {
+        $("#card").flip(false);
+    });
+
+    $("#entries1").click(function () {
+        $("#card2").flip(true);
+    });
+
+    $("#close2").click(function () {
+        $("#card2").flip(false);
+    });
+
+    $("#entries2").click(function () {
+        $("#card3").flip(true);
+    });
+
+    $("#close3").click(function () {
+        $("#card3").flip(false);
+    });
+
+
 
     //////funtion for creating carousel //////////////////////////////
 
