@@ -16,7 +16,6 @@
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/logic.js"></script>
 
     <link href="assets/css/main.css" rel="stylesheet" />
 
@@ -49,8 +48,14 @@
                     </div>
                     <div class="back">
                         <br>
-                        <input placeholder="Search">
+                        <input type="text" id="foodSearch" placeholder="Search">
                         <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                        <div class= "selectedFoodItems">
+                            <!-- div for items that have been selected by the user -->
+                        </div>
+                        <div class= "returnedFoodItems">
+                            <!-- div for items that have been returned by the Ajax call -->
+                        </div>
                         <p></p>
                         <p class="text" id="close">Close</p>
                     </div>
@@ -117,6 +122,9 @@
         <div>
             <a class="title">WAYE-T<a>
         </div>
+
+
+        <script src="assets/js/logic.js"></script>
 
 </body>
 
