@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#donut_single").toggleClass("rotate-in-2-cw");
+    $("#donut_single").toggleClass("rotate-in-center");
 
     $("#card").flip({
         trigger: 'manual'
