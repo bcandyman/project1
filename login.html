@@ -30,68 +30,62 @@
 <body>
     <div id="background" class="background">
         <div class="header-container">
-            <p class="title">WAYE-T</p>
+            <p class="title">WAYE</p>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link nav-buttons" href="#">Home</a>
+                    <a class="nav-link nav-buttons" href="login.html">Login</a>
                 </li>
-                <li class="nav-item nav-buttons">
-                    <a class="nav-link nav-buttons" href="#">Journal</a>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="index.html">Entries</a>
                 </li>
-                <li class="nav-item nav-buttons">
-                    <a class="nav-link" href="#">Profile</a>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="#">Profile</a>
                 </li>
             </ul>
         </div>
         <div id="main" class="container">
             <div id="side1">
-                <div id="card">
+                <div id="welcome-card">
                     <div class="front">
                         <div class="wrapper">
-                            <div class="card-headerx">
-                                <p class="day" id="today">11 | 01</p>
-                                <p class="date">Today</p>
-                                <p class="weekday">FRI</p>
-                            </div>
-                            <p class="sign" id="user-sign">TAURUS</p>
-                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure
-                                of yourself,
-                                take a leap
-                                forward today!</p>
-                            <div class="donut-box">
-                                <p id="donut_single" class="donut"></p>
-                                <p class="inside-value">385</p>
-                                <p class="inside-title">Daily Calories</p>
-                                <p class="text2" id="search">SEARCH</p>
-                            </div>
+                            <form id="LoginForm" onsubmit="return false">
+                                <p class="date">Welcome</p>
+                                <div class="FormRow">
+                                    <label for="Username">Username:</label>
+                                    <input type="text" size="18" id="Username" name="Username" />
+                                </div>
+                                <div class="FormRow">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" size="18" id="Password" name="Password" />
+                                </div>
+                                <br>
+                                <div class="FormRow" id="LoginButtonDiv">
+                                    <input type="submit" value="Login" />
+                                </div>
+                                <br>
+                                <div id="new-acct" class="text3">Create a Profile</div>
+                            </form>
                         </div>
                     </div>
                     <div class="back">
                         <input id="input" placeholder="Search">
-                        <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
-                        <p class="text2" id="close">Close</p>
+                        <button type="submit" class="btn btn-dark sub-button" id="submit2">Submit</button>
+                        <p class="text3" id="close4">Close</p>
                     </div>
                 </div>
             </div>
             <div id="side2">
-                <div id="card2">
+                <div id="wel-card-2">
                     <div class="front">
                         <div class="wrapper2">
-                            <div class="card-headerx">
-                                <p class="day">11 | 01</p>
-                                <p class="date2">Yesterday</p>
-                                <p class="weekday">FRI</p>
-                            </div>
-                            <p class="sign" id="user-sign2">TAURUS</p>
-                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
-                                yourself,
-                                take a leap
-                                forward today!</p>
-                            <div class="donut-box">
-                                <p id="donut_single" class="donut"></p>
-                                <p class="inside-value">385</p>
-                                <p class="inside-title">Daily Calories</p>
-                                <p id="entries1" class="text2">ENTRIES</p>
+                            <div class="pro-headerx">
+                                <div class="date2">Martha Stewart</div>
+                                <br>
+                                <div><img class="profile-pic" src="assets/images/martha_stewart_pro.jpg"></div>
+                                <div class="sign2">LEO</div>
+                                <div class="inside">You will discover
+                                    that you have a keen ability to tune into the subtle energies that are moving
+                                    through your life right now.</div>
                             </div>
                         </div>
                     </div>
@@ -101,31 +95,25 @@
                 </div>
             </div>
             <div id="side3">
-                <div id="card3">
+                <div id="wel-card-3">
                     <div class="front">
                         <div class="wrapper2">
-                            <div class="card-headerx">
-                                <p class="day">11 | 01</p>
-                                <p class="date2">Tomorrow</p>
-                                <p class="weekday">FRI</p>
-                            </div>
-                            <p class="sign" id="user-sign2">TAURUS</p>
-                            <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
-                                yourself,
-                                take a leap
-                                forward today!</p>
-                            <div class="donut-box">
-                                <p id="donut_single" class="donut"></p>
-                                <p class="inside-value">385</p>
-                                <p class="inside-title">Daily Calories</p>
-                                <p class="text2" id="entries2">ENTRIES</p>
+                            <div class="pro-headerx">
+                                <div class="date2">Martha Stewart</div>
+                                <br>
+                                <div><img class="profile-pic" src="assets/images/martha_stewart_pro.jpg"></div>
+                                <div class="sign2">LEO</div>
+                                <div class="inside">You will discover
+                                    that you have a keen ability to tune into the subtle energies that are moving
+                                    through your life right now.</div>
                             </div>
                         </div>
                     </div>
                     <div class="back">
-                        <p class="text2" id="close3">Close</p>
+                        <p class="text3" id="close3">Close</p>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="nav-wrapper">

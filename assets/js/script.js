@@ -18,6 +18,13 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#wel-card-2").flip({
+        trigger: 'manual'
+    });
+
+    $("#wel-card-3").flip({
+        trigger: 'manual'
+    });
 
     $("#new-acct").click(function () {
         $("#welcome-card").flip(true);
@@ -53,7 +60,7 @@ $(document).ready(function () {
         $("#card3").flip(false);
     });
 
-    $("#wel-close").click(function () {
+    $("#close4").click(function () {
         $("#welcome-card").flip(false);
     });
 
@@ -93,6 +100,7 @@ $(document).ready(function () {
         $("#card").flip(false);
         $("#card2").flip(false);
         $("#card3").flip(false);
+        $("#welcome-card").flip(false);
     });
 
     $("#pre").click(function () {
@@ -127,6 +135,7 @@ $(document).ready(function () {
         $("#card").flip(false);
         $("#card2").flip(false);
         $("#card3").flip(false);
+        $("#welcome-card").flip(false);
 
     });
 

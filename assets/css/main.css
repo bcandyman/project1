@@ -4,6 +4,7 @@ html, body{
     margin: auto;
     padding: 0px;
     background-color: black;;
+    text-align: center;
 }
 
 
@@ -23,7 +24,7 @@ html, body{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 100px;
 }
 
 .container {
@@ -73,6 +74,7 @@ html, body{
     transform: translateX(0px);
     transition: all .5s;
     padding: 0px 20px 0px 20px;
+    text-align: center;
 }
 
 .home-wrapper{
@@ -151,6 +153,22 @@ html, body{
 }
 #pre:hover{
     cursor: pointer;
+}
+
+.profile-pic{
+    height:100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.pro-headerx{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content: baseline;
+    margin: auto;
+    margin-top: 2%;
+    
 }
 
 #nex{
@@ -233,10 +251,21 @@ align-items:center;
 .text2{
     color:white;
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     font-size: 12px;
     font-family: 'Abel', sans-serif;
     text-align: center;
+    
+}
+
+.text3{
+    display: flex;
+    color:white;
+    bottom: 5px;
+    font-size: 12px;
+    font-family: 'Abel', sans-serif;
+    justify-content:center;
+    align-items:flex-end;
     
 }
 .sign{
@@ -247,6 +276,14 @@ align-items:center;
     font-size:14px;
     font-family: 'Abel', sans-serif;
     
+}
+
+.sign2{
+    color:wheat;
+    font-size:14px;
+    font-family: 'Abel', sans-serif;
+    margin-top: 10px;
+
 }
 
 .wrapper2{
@@ -461,7 +498,7 @@ html, body{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 100px;
 }
 
 .container {
