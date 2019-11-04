@@ -26,8 +26,10 @@
 
     <link type="text/css" rel="stylesheet" href="assets/css/main.css">
 
+    <!-- moment cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
+    
+    <!-- firebase database -->
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
@@ -54,9 +56,9 @@
                     <div class="front">
                         <div class="wrapper">
                             <div class="card-headerx">
-                                <p class="day" id="today">11 | 01</p>
+                                <p class="day" id="todayDate"></p>
                                 <p class="date">Today</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="todayWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure
@@ -92,9 +94,9 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="card-headerx">
-                                <p class="day">11 | 01</p>
+                                <p class="day" id="yesterdayDate"></p>
                                 <p class="date2">Yesterday</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="yesterdayWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
@@ -119,9 +121,9 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="card-headerx">
-                                <p class="day">11 | 01</p>
+                                <p class="day" id="tomorrowDate"></p>
                                 <p class="date2">Tomorrow</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="tomorrowWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
