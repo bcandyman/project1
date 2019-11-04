@@ -297,6 +297,10 @@ align-items:center;
     padding: 2px 0px;
 }
 
+.returnedFoodItems:hover{
+    cursor: pointer;
+}
+
 .selectedFoodItems{
     padding: 2px 0px;
 }
