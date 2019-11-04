@@ -14,6 +14,15 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#welcome-card").flip({
+        trigger: 'manual'
+    });
+
+
+    $("#new-acct").click(function () {
+        $("#welcome-card").flip(true);
+    });
+
     $("#search").click(function () {
         $("#card").flip(true);
     });
@@ -38,6 +47,9 @@ $(document).ready(function () {
         $("#card3").flip(false);
     });
 
+    $("#wel-close").click(function () {
+        $("#welcome-card").flip(false);
+    });
 
 
     //////funtion for creating carousel //////////////////////////////
