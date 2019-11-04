@@ -18,6 +18,10 @@ var itemsToDatabase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
+function getDate(dayOffset, format){
+        return moment().day(dayOffset).format(format)
+}
+
 function populateFoodItems(objFood){
     //clear items returned by search
     $(".returnedFoodItems").find("*").not(".selected-item").empty()
@@ -106,8 +110,13 @@ $("#close").on("click",function(){
     console.log("I did it!")
 })
 
-var day = moment().format("YYYYMMDD");
-console.log(day)
-// console.log(moment().format(20130208))
-console.log(moment().format())
-database.ref("userName").set({joinDate:day})
+
+//print dates on cards
+$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"))
+$("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase())
+
+$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1,"DD"))
+$("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase())
+
+$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"))
+$("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
