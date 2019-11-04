@@ -25,6 +25,8 @@ $(document).ready(function () {
 
     $("#search").click(function () {
         $("#card").flip(true);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
     });
 
     $("#close").click(function () {
@@ -33,6 +35,8 @@ $(document).ready(function () {
 
     $("#entries1").click(function () {
         $("#card2").flip(true);
+        $("#card").flip(false);
+        $("#card3").flip(false);
     });
 
     $("#close2").click(function () {
@@ -41,6 +45,8 @@ $(document).ready(function () {
 
     $("#entries2").click(function () {
         $("#card3").flip(true);
+        $("#card").flip(false);
+        $("#card2").flip(false);
     });
 
     $("#close3").click(function () {
@@ -84,6 +90,9 @@ $(document).ready(function () {
             $("#side1").css("transform", "translateX(40px) scale(1.0)");
             flag = 0;
         }
+        $("#card").flip(false);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
     });
 
     $("#pre").click(function () {
@@ -115,6 +124,10 @@ $(document).ready(function () {
             $("#side3").css("transform", "translateX(40px) scale(1.0)");
             flag = 1;
         }
+        $("#card").flip(false);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
+
     });
 
 
