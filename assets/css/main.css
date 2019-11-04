@@ -85,11 +85,9 @@ html, body{
     transition: all .5s;
     background-color:  rgb(167, 167, 167);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: auto;
+    /* overflow: auto;
     overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-
+    word-wrap: break-word; */
 }
 
 #input{
@@ -286,6 +284,29 @@ align-items:center;
     font-size: 20px;
     text-align: center;
     margin-top: 5px;
+}
+
+
+.foodItems{
+    font-size: 10px;
+    margin-top: 5px;
+    max-height: 185px;
+    overflow: scroll;
+}
+.returnedFoodItems{
+    padding: 2px 0px;
+}
+
+.selectedFoodItems{
+    padding: 2px 0px;
+}
+
+.foodItems p{
+    margin: 0px;
+}
+
+.foodItems hr{
+    margin: 5px;
 }
 
 
