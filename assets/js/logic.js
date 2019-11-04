@@ -13,10 +13,12 @@ var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
 var itemsToDatabase
+var userName = "candben"
 
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+var userDatabase 
 
 function getDate(dayOffset, format){
         return moment().day(dayOffset).format(format)
@@ -120,3 +122,16 @@ $("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase())
 
 $("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"))
 $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
+
+
+//create user database or set reference if is a returning user
+database.ref().once("value", function(snapshot){
+    if(userName in snapshot.val()){
+        userDatabase = database.ref(userName)
+    }
+    else{
+        userDatabase = database.ref(userName).set({
+            joinDate: getDate(0,"YYYYMMDD")
+        })
+    }
+})
