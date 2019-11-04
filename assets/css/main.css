@@ -239,7 +239,7 @@ align-items:center;
     display: flex;
     position:absolute;
     color: white;
-    bottom: 80px;
+    bottom: 73px;
     font-size: 36px;
     font-family: 'Quicksand', sans-serif;
 
@@ -251,7 +251,7 @@ align-items:center;
     align-content:center ;
     justify-content:center;
     color: white;
-    bottom:78px;
+    bottom:68px;
     font-size: 9px;
     font-family: 'Quicksand', sans-serif;
 }
