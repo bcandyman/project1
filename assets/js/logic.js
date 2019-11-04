@@ -29,7 +29,9 @@ function populateFoodItems(objFood){
         var newDiv = $("<div>")
         newDiv.addClass("searched-item")
         newDiv.attr("data-searchedFoodItem", i)
-        newDiv.text(objFood.hits[i].fields.item_name)
+        newDiv.append($("<p>").html("Item: " + objFood.hits[i].fields.item_name))
+        newDiv.append($("<p>").html("Brand: " + objFood.hits[i].fields.brand_name))
+        newDiv.append($("<p>").html("Serving size/qty: " + objFood.hits[i].fields.nf_serving_size_qty))
         newDiv.append($("<hr>"))
 
         //append newly created anchor tag to dropdown menu
@@ -44,6 +46,8 @@ $("#submit").on("click",function(){
     //initialize variables
     //foodSearch = the food string the user desires to search
     var foodSearch = $("#foodSearch").val()
+    //clear search input text
+    $("#foodSearch").val("")
     //numOfResults = the number of items the user would like returned
     var numOfResults = 5
     
