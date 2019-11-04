@@ -43,34 +43,54 @@
                 </li>
             </ul>
         </div>
-        <div id="main" class="container">
+        <div id="main2" class="container">
             <div id="side1">
                 <div id="welcome-card">
                     <div class="front">
                         <div class="wrapper">
                             <form id="LoginForm" onsubmit="return false">
-                                <p class="date">Welcome</p>
-                                <div class="FormRow">
+                                <p class="welcome">Welcome</p>
+                                <a class="text1">PLEASE LOGIN</a>
+                                <input id="input" class="home_input_field" placeholder="user name">
+                                <br>
+                                <a class="text1">PASSWORD</a>
+                                <input id="input" class="home_input_field" placeholder="*********">
+                                <br>
+                                <!-- <div class="FormRow">
                                     <label for="Username">Username:</label>
-                                    <input type="text" size="18" id="Username" name="Username" />
+                                    <input class="form-control form-control-sm" type="text" placeholder="">
                                 </div>
                                 <div class="FormRow">
                                     <label for="Password">Password:</label>
-                                    <input type="password" size="18" id="Password" name="Password" />
-                                </div>
+                                    <input class="form-control form-control-sm" type="text" placeholder="">
+                                </div>-->
                                 <br>
                                 <div class="FormRow" id="LoginButtonDiv">
-                                    <input type="submit" value="Login" />
+                                    <button type="submit" class="btn btn-light sub-button" id="submit">Login</button>
                                 </div>
-                                <br>
                                 <div id="new-acct" class="text3">Create a Profile</div>
                             </form>
                         </div>
                     </div>
                     <div class="back">
-                        <input id="input" placeholder="Search">
+                        <form id="ProfileForm" onsubmit="return false">
+                            <h1 class="text4">CREATE A NEW PROFILE</h1>
+                            <a class="text4">Choose a user name</a>
+                            <input id="input" class="home_input_field" placeholder="ex: Snoopy70">
+                            <a class="text4">Create a password</a>
+                            <input id="input" class="home_input_field" placeholder="*********">
+                            <a class="text4">Date of birth</a>
+                            <input id="input" class="home_input_field" placeholder="ex: 12-25-1970">
+                            <a class="text4">Current Weight</a>
+                            <input id="input" class="home_input_field" placeholder="optional">
+                            <a class="text4">Body Mass Index (BMI)</a>
+                            <input id="input" class="home_input_field" placeholder="optional">
+                            <br>
+                            <br>
+
+                        </form>
                         <button type="submit" class="btn btn-dark sub-button" id="submit2">Submit</button>
-                        <p class="text3" id="close4">Close</p>
+                        <p class="text3" id="close4">Back</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +99,7 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="pro-headerx">
-                                <div class="date2">Martha Stewart</div>
+                                <div class="date3">Martha Stewart</div>
                                 <br>
                                 <div><img class="profile-pic" src="assets/images/martha_stewart_pro.jpg"></div>
                                 <div class="sign2">LEO</div>
@@ -88,9 +108,6 @@
                                     through your life right now.</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="back">
-                        <p class="text2" id="close2">Close</p>
                     </div>
                 </div>
             </div>
@@ -99,13 +116,13 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="pro-headerx">
-                                <div class="date2">Martha Stewart</div>
+                                <div class="date3">Oprah Winfrey</div>
                                 <br>
-                                <div><img class="profile-pic" src="assets/images/martha_stewart_pro.jpg"></div>
-                                <div class="sign2">LEO</div>
-                                <div class="inside">You will discover
-                                    that you have a keen ability to tune into the subtle energies that are moving
-                                    through your life right now.</div>
+                                <div><img class="profile-pic" src="assets/images/oprah_pro.jpg"></div>
+                                <div class="sign2">AQUARIUS</div>
+                                <div class="inside"> Today you might feel unloved even though there's no real reason
+                                    for it.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -113,7 +130,6 @@
                         <p class="text3" id="close3">Close</p>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="nav-wrapper">
