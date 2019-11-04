@@ -142,7 +142,7 @@ html, body{
 #pre{
     display: flex;
     font-size: 75px;
-    color:gray;
+    color:white;
     text-align: center;
     line-height: 30px;
     border-radius: 100%;
@@ -155,7 +155,7 @@ html, body{
 
 #nex{
     font-size: 75px;
-    color:gray;
+    color:white;
     text-align: center;
     line-height: 30px;
     border-radius: 100%;
@@ -579,7 +579,7 @@ html, body{
 #pre{
     display: flex;
     font-size: 75px;
-    color:gray;
+    color:white;
     text-align: center;
     line-height: 30px;
     border-radius: 100%;
@@ -592,7 +592,7 @@ html, body{
 
 #nex{
     font-size: 75px;
-    color:gray;
+    color:white;
     text-align: center;
     line-height: 30px;
     border-radius: 100%;
