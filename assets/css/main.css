@@ -73,7 +73,7 @@ html, body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: translateX(0px);
     transition: all .5s;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 10px 0px 10px;
     text-align: center;
 }
 
@@ -219,6 +219,7 @@ align-items:center;
     align-content: center;
     top:87px;
     width: 200px;
+    z-index:1;
 }
 
 .inside{
@@ -240,6 +241,7 @@ align-items:center;
     bottom: 73px;
     font-size: 36px;
     font-family: 'Quicksand', sans-serif;
+    z-index:-1;
 
 }
 
@@ -252,6 +254,7 @@ align-items:center;
     bottom:68px;
     font-size: 9px;
     font-family: 'Quicksand', sans-serif;
+    z-index:-1;
 }
 
 .text1{
@@ -259,16 +262,18 @@ align-items:center;
     font-size: 12px;
     font-family: 'Abel', sans-serif;
     text-align: center;
+    z-index:2;
     
 }
 
 .text2{
     color:white;
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
     font-size: 12px;
     font-family: 'Abel', sans-serif;
     text-align: center;
+    z-index:2;
     
 }
 
@@ -280,6 +285,7 @@ align-items:center;
     font-family: 'Abel', sans-serif;
     justify-content:center;
     align-items:flex-end;
+    z-index:-1;
     
 }
 
@@ -288,6 +294,7 @@ align-items:center;
     font-size: 12px;
     font-family: 'Abel', sans-serif;
     text-align: center;
+    z-index:-1;
     
 }
 .sign{
@@ -297,6 +304,7 @@ align-items:center;
     left: 82px;
     font-size:14px;
     font-family: 'Abel', sans-serif;
+    z-index:-1;
     
 }
 
@@ -305,6 +313,7 @@ align-items:center;
     font-size:14px;
     font-family: 'Abel', sans-serif;
     margin-top: 10px;
+    z-index:-1;
 
 }
 
@@ -613,7 +622,7 @@ html, body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: translateX(0px);
     transition: all .5s;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 10px 0px 10px;
 }
 
 .home-wrapper{
@@ -730,6 +739,7 @@ align-items:center;
     align-content: center;
     top:87px;
     width: 200px;
+    z-index:1;
 }
 
 .inside{
@@ -740,7 +750,7 @@ align-items:center;
     font-size: 9px;
     font-family: 'Quicksand', sans-serif;
     text-align: center;
-    
+    z-index:-1;
 }
 
 
@@ -751,7 +761,7 @@ align-items:center;
     bottom: 80px;
     font-size: 36px;
     font-family: 'Quicksand', sans-serif;
-
+z-index:-1;
 }
 
 .inside-title{
@@ -763,17 +773,19 @@ align-items:center;
     bottom:78px;
     font-size: 9px;
     font-family: 'Quicksand', sans-serif;
+    z-index:-1;
 }
 
 .text2{
     color:white;
     position: absolute;
-    bottom: 10px;
+    bottom: 2px;
     font-size: 12px;
     font-family: 'Abel', sans-serif;
     text-align: center;
-    
+    z-index:2;   
 }
+
 .sign{
     color:rgb(167, 167, 167);
     position: absolute;
@@ -781,6 +793,7 @@ align-items:center;
     left: 82px;
     font-size:14px;
     font-family: 'Abel', sans-serif;
+    z-index:-1;
     
 }
 
