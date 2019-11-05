@@ -434,6 +434,7 @@ align-items:center;
 .returnedFoodItems{
     padding: 2px 0px;
     font-family: 'Abel', sans-serif;
+     color: darkslategrey;
 }
 
 .returnedFoodItems:hover{
@@ -443,6 +444,8 @@ align-items:center;
 .selectedFoodItems{
     padding: 2px 0px;
     font-family: 'Abel', sans-serif;
+    font-weight: 900;
+   
 }
 
 .foodItems p{
