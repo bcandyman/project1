@@ -7,7 +7,7 @@ login(form) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             loginResults();:exploding_head:
-Here is the event listener
+//Here is the event listener
 window.addEventListener(window,"load", function() {
 var loginForm = document.getElementById("LoginForm");
 window.addEventListener(loginForm, "submit", function() {
