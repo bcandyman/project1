@@ -15,13 +15,18 @@ var nutritionCallResults = {}
 var itemsToDatabase
 var userName = "candben"
 
+var calories = 0
+var carbohydrates = 0
+var protein = 0
+var fat = 0
+
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var userDatabase 
 
 function getDate(dayOffset, format){
-        return moment().add(dayOffset,"day").format(format)
+    return moment().add(dayOffset,"day").format(format)
 }
 
 function populateFoodItems(objFood){
@@ -125,13 +130,28 @@ $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
 
 
 //create user database or set reference if is a returning user
-database.ref().once("value", function(snapshot){
-    if(userName in snapshot.val()){
-        userDatabase = database.ref(userName)
-    }
-    else{
-        userDatabase = database.ref(userName).set({
-            joinDate: getDate(0,"YYYYMMDD")
-        })
-    }
-})
+// database.ref().once("value", function(snapshot){
+//     console.log(snapshot.val())
+//     if(userName in snapshot.val()){
+//         console.log("Yes")
+//         userDatabase = database.ref(userName)
+//     }
+//     else{
+//         console.log("No")
+//         userDatabase = database.ref(userName).set({
+//             joinDate: getDate(0,"YYYYMMDD")
+//         })
+//     }
+// })
+
+
+// database.ref(userName).set("Date")
+
+// var newArr=[] //= ["dayOne", "dayTwo"]
+// var newObj  = {carb:1, fat:2}
+// var newObj2 = {carb:3,fat:4}
+// newObj = NewObject[Key:"value"]
+// newArr["dayOne"]=newObj
+// newArr["dayTwo"]=newObj2
+// console.log(newArr.dayOne.carb)
+// database.ref(userName).set(newArr)
