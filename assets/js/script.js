@@ -26,8 +26,16 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#pro-card").flip({
+        trigger: 'manual'
+    });
+
     $("#new-acct").click(function () {
         $("#welcome-card").flip(true);
+    });
+
+    $("#edi-pro").click(function () {
+        $("#pro-card").flip(true);
     });
 
     $("#search").click(function () {
@@ -60,10 +68,13 @@ $(document).ready(function () {
         $("#card3").flip(false);
     });
 
-    $("#close4").click(function () {
+    $("#submit2").click(function () {
         $("#welcome-card").flip(false);
     });
 
+    $("#submit2").click(function () {
+        $("#pro-card").flip(false);
+    });
 
     //////funtion for creating carousel //////////////////////////////
 

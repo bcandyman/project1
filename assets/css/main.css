@@ -104,8 +104,8 @@ html, body{
 }
 
 .home_input_field{
-   justify-content: center;
-    width: 100%;
+    justify-content: center;
+    width: 90%;
     height: 28px;
     font-size: 10px;
 
@@ -113,7 +113,15 @@ html, body{
 
 .input_field{
    justify-content: center;
-    width: 66%;
+    width: 80%;
+    height: 28px;
+    font-size: 10px;
+
+}
+
+.search_input{
+   justify-content: left;
+   width: 67%;
     height: 28px;
     font-size: 10px;
 
@@ -167,6 +175,16 @@ html, body{
     border-radius: 100%;
 }
 
+.pro-headerx-2{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content: baseline;
+    margin: auto;
+    margin-top: 2%;
+    
+}
+
 .pro-headerx{
     display:flex;
     flex-direction: column;
@@ -175,6 +193,18 @@ html, body{
     margin: auto;
     margin-top: 2%;
     
+}
+
+.pro-wrapper{
+    height: 350px !important;
+    width: 200px !important;
+    background-color:  rgb(9, 71, 68);
+    border: 1px solid rgb(70, 69, 69);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translateX(0px);
+    transition: all .5s;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
 }
 
 #nex{
@@ -394,13 +424,16 @@ align-items:center;
 
 
 .foodItems{
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 5px;
-    max-height: 185px;
+    max-height: 320px;
     overflow: scroll;
+    font-family: 'Abel', sans-serif;
+    text-align: left;
 }
 .returnedFoodItems{
     padding: 2px 0px;
+    font-family: 'Abel', sans-serif;
 }
 
 .returnedFoodItems:hover{
@@ -409,6 +442,7 @@ align-items:center;
 
 .selectedFoodItems{
     padding: 2px 0px;
+    font-family: 'Abel', sans-serif;
 }
 
 .foodItems p{
@@ -637,6 +671,28 @@ html, body{
     padding: 0px 20px 0px 20px;
 }
 
+.pro-headerx{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content: baseline;
+    margin: auto;
+    margin-top: 2%;
+    
+}
+
+.pro-wrapper{
+    height: 350px !important;
+    width: 200px !important;
+    background-color:  rgb(9, 71, 68);
+    border: 1px solid rgb(70, 69, 69);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translateX(0px);
+    transition: all .5s;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+}
+
 .back {
     height: 400px !important;
     width: 200px !important;
@@ -656,7 +712,7 @@ html, body{
 
 #input{
    justify-content: center;
-    width: 66%;
+    width: 90%;
     height: 28px;
       font-size: 10px;
 
@@ -854,5 +910,7 @@ z-index:-1;
     text-align: center;
     margin-top: 5px;
 }
+
+
 
 }
