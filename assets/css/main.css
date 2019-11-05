@@ -24,14 +24,14 @@ html, body{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 }
 
 .container {
     display: flex;
     justify-content:space-around;
     align-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 8%;
 }
 
 .background {
@@ -575,14 +575,14 @@ html, body{
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 
 .container {
     display: flex;
     justify-content:space-around;
     align-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 8%;
 }
 
 .background {
