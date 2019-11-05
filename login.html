@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food API Test</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+
+</head>
+
+<body>
+    <div id="background" class="background">
+        <div class="header-container">
+            <p class="title">WAYE</p>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link nav-buttons" href="login.html">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="index.html">Entries</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="#">Profile</a>
+                </li>
+            </ul>
+        </div>
+        <div id="main2" class="container">
+            <div id="side1">
+                <div id="welcome-card">
+                    <div class="front">
+                        <div class="wrapper">
+                            <form id="LoginForm" onsubmit="return false">
+                                <p class="welcome">Welcome</p>
+                                <a class="text1">PLEASE LOGIN</a>
+                                <input id="input" class="home_input_field" placeholder="user name">
+                                <br>
+                                <a class="text1">PASSWORD</a>
+                                <input id="input" class="home_input_field" placeholder="*********">
+                                <br>
+                                <!-- <div class="FormRow">
+                                    <label for="Username">Username:</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="">
+                                </div>
+                                <div class="FormRow">
+                                    <label for="Password">Password:</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="">
+                                </div>-->
+                                <br>
+                                <div class="FormRow" id="LoginButtonDiv">
+                                    <button type="submit" class="btn btn-light sub-button" id="submit">Login</button>
+                                </div>
+                                <div id="new-acct" class="text3">Create a Profile</div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <form id="ProfileForm" onsubmit="return false">
+                            <h1 class="text4">CREATE A NEW PROFILE</h1>
+                            <br>
+                            <div class="text4">Choose a user name</div>
+                            <input id="input" class="home_input_field" placeholder="ex: Snoopy70">
+                            <div class="text4">Create a password</div>
+                            <input id="input" class="home_input_field" placeholder="*********"><br>
+                            <div class="text4">Date of birth</div>
+                            <input id="input" class="home_input_field" placeholder="ex: 12-25-1970">
+                            <div class="text4">Current Weight</div>
+                            <input id="input" class="home_input_field" placeholder="optional"><br>
+                            <div class="text4">Body Mass Index (BMI)</div>
+                            <input id="input" class="home_input_field" placeholder="optional">
+                            <br>
+                            <br>
+
+                        </form>
+                        <button type="submit" class="btn btn-dark sub-button" id="submit2">Submit</button>
+                        <p class="text3" id="close4">Back</p>
+                    </div>
+                </div>
+            </div>
+            <div id="side2">
+                <div id="wel-card-2">
+                    <div class="front">
+                        <div class="wrapper2">
+                            <div class="pro-headerx">
+                                <div class="date3">Martha Stewart</div>
+                                <br>
+                                <div><img class="profile-pic" src="assets/images/martha_stewart_pro.jpg"></div>
+                                <div class="sign2">LEO</div>
+                                <div class="inside">You will discover
+                                    that you have a keen ability to tune into the subtle energies that are moving
+                                    through your life right now.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="side3">
+                <div id="wel-card-3">
+                    <div class="front">
+                        <div class="wrapper2">
+                            <div class="pro-headerx">
+                                <div class="date3">Oprah Winfrey</div>
+                                <br>
+                                <div><img class="profile-pic" src="assets/images/oprah_pro.jpg"></div>
+                                <div class="sign2">AQUARIUS</div>
+                                <div class="inside"> Today you might feel unloved even though there's no real reason
+                                    for it.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <p class="text3" id="close3">Close</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrapper">
+            <div id="pre">
+                &#8249
+            </div>
+            <div id="nex">
+                &#8250
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/js/script.js"></script>
+
+</html>
