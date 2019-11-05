@@ -21,7 +21,7 @@ var database = firebase.database();
 var userDatabase 
 
 function getDate(dayOffset, format){
-        return moment().day(dayOffset).format(format)
+        return moment().add(dayOffset,"day").format(format)
 }
 
 function populateFoodItems(objFood){
