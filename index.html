@@ -4,14 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food API Test</title>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -23,8 +20,18 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet">
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
     <link type="text/css" rel="stylesheet" href="assets/css/main.css">
 
+    <!-- moment cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
+    <!-- firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
 
 <body>
@@ -49,9 +56,9 @@
                     <div class="front">
                         <div class="wrapper">
                             <div class="card-headerx">
-                                <p class="day" id="today">11 | 01</p>
+                                <p class="day" id="todayDate"></p>
                                 <p class="date">Today</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="todayWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure
@@ -67,8 +74,17 @@
                         </div>
                     </div>
                     <div class="back">
-                        <input id="input" class="input_field" placeholder="Search">
+                        <input type="text" id="foodSearch" placeholder="Search">
                         <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                        <div class="foodItems">
+                            <div class= "selectedFoodItems">
+                                <!-- div for items that have been selected by the user -->
+                            </div>
+                            <div class= "returnedFoodItems">
+                                <!-- div for items that have been returned by the Ajax call -->
+                            </div>
+                        </div>
+                        <p></p>
                         <p class="text2" id="close">Close</p>
                     </div>
                 </div>
@@ -78,9 +94,9 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="card-headerx">
-                                <p class="day">11 | 01</p>
+                                <p class="day" id="yesterdayDate"></p>
                                 <p class="date2">Yesterday</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="yesterdayWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
@@ -105,9 +121,9 @@
                     <div class="front">
                         <div class="wrapper2">
                             <div class="card-headerx">
-                                <p class="day">11 | 01</p>
+                                <p class="day" id="tomorrowDate"></p>
                                 <p class="date2">Tomorrow</p>
-                                <p class="weekday">FRI</p>
+                                <p class="weekday" id="tomorrowWeekdayName"></p>
                             </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
@@ -137,8 +153,15 @@
                 &#8250
             </div>
         </div>
+        <div>
+            <a class="title">WAYE-T<a>
+        </div>
+
     </div>
+
+    <script src="assets/js/logic.js"></script>
+    <script src="assets/js/script.js"></script>
+
 </body>
-<script src="assets/js/script.js"></script>
 
 </html>
