@@ -418,8 +418,13 @@ align-items:center;
 .search{
     color:rgb(48, 47, 47);
     font-size: 20px;
-    text-align: center;
+       text-align: center;
     margin-top: 5px;
+}
+
+.google-signin{
+width: 90%;;
+
 }
 
 
