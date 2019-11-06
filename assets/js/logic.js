@@ -163,18 +163,21 @@ var userWeight = 150 // User's weight in lbs
 
 //  The factor to calculate reccomended intakes are pre-set but may be changed by the user if desired.
 
-var dailyRecProIntake = (userWeight * .7) // Needs to be 70% of user weight in grams
-var dailyRecFatIntake = (userWeight * .25) // Needs to be 25% of user weight in grams
+var dailyRecProIntake = (userWeight * .7)   // Needs to be 70% of user weight in grams
+var dailyRecFatIntake = (userWeight * .25)  // Needs to be 25% of user weight in grams
 var dailyRecCarbIntake  = (userWeight - dailyRecProIntake - dailyRecFatIntake); // Remainder intake from the other two macros
-var dailyRecCalIntake = 2000 // This is also pre-set but may be adjusted by the user.
+var dailyRecCalIntake = 2000    // This is also pre-set but may be adjusted by the user.
 
 //  Needs to take one day's worth of food intake from Firebase (within 20191106/Foods) and calculates 
 //  the number of calories, protiens, fat, and carbs eaten that day.
-//  To Do:
+//  To Do Items:
 //  item1Pro + item2Pro + item3Pro = todaysProIntake
 //  item1Fat + item2Fat + item3Fat = todaysFatIntake
 //  item1Carb + item2Carb + item3Carb = todaysCarbIntake
 //  item1Cal + item2Cal + item3Cal = todaysCalIntake
+//  Create a function which will find items1-X and grab values from within each to put into the below variables.
+//  Create a function that w
+//  Be able to repeat this for each item (Do we need to store the values into variables or can we run the cal)
 
 var item1Pro
 var item1Fat
@@ -182,10 +185,10 @@ var item1Carb
 var item1Cal 
 
 //  Needs to take the daily calories
-var todaysProIntake = 23 // Needs to be updated with Firebase snapshot values
-var todaysFatIntake = 15 //
-var todaysCarbIntake = 20
-var todaysCalIntake = 1500
+var todaysProIntake = 23    // Needs to be updated with Firebase snapshot values
+var todaysFatIntake = 15    // Needs to be updated with Firebase snapshot values
+var todaysCarbIntake = 20   // Needs to be updated with Firebase snapshot values
+var todaysCalIntake = 1500  // Needs to be updated with Firebase snapshot values
 
 //  Push all these variables into an array with the date to store into analytics for future use.
 
@@ -203,4 +206,6 @@ var todaysCalGoal = todaysCalIntake / dailyRecCalIntake
 console.log(todaysProGoal)
 console.log(todaysFatGoal)
 console.log(todaysCalGoal)
+
+// Apply today's intakes into the Google vizualization.
 
