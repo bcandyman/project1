@@ -119,14 +119,14 @@ $("#close").on("click",function(){
 
 
 //print dates on cards
-$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"))
-$("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase())
+$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"));
+$("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase());
 
-$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1,"DD"))
-$("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase())
+$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1,"DD"));
+$("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase());
 
-$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"))
-$("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
+$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"));
+$("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase());
 
 
 //create user database or set reference if is a returning user
@@ -155,3 +155,39 @@ $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
 // newArr["dayTwo"]=newObj2
 // console.log(newArr.dayOne.carb)
 // database.ref(userName).set(newArr)
+
+
+//----- Calulating Macros ------//
+
+var userWeight = 150
+
+//  The factor to calculate reccomended intakes are pre-set but may be changed by the user if desired.
+
+var dailyRecProIntake = (userWeight * .7) // Needs to be 70% of user weight in grams
+var dailyRecFatIntake = (userWeight * .25) // Needs to be 25% of user weight in grams
+var dailyRecCarbIntake  = (userWeight - dailyRecProIntake - dailyRecFatIntake); // This becomes the remainder of 
+var dailyRecCalIntake = 1600
+
+//  Needs to take one day's worth of food intake from Firebase (within 20191106/Foods) and calculates 
+//  the number of calories, protiens, fat, and carbs eaten that day. 
+
+//  Needs to take the daily calories
+var todaysProIntake = 23 // Needs to be updated with Firebase snapshot values
+var todaysFatIntake = 15
+var todaysCarbIntake = 20
+var todaysCalIntake = 1500
+
+//  Needs to show how far along a user is in their daily goal.
+
+//  Average cal, carb, fat, pro intake over X days. Take the data within a range of dates (20191102 through 20191106)
+//  and compare it against today's intake.
+
+var todaysProGoal = todaysProIntake / dailyRecProIntake
+var todaysFatGoal = todaysFatIntake / dailyRecFatIntake 
+var todaysCarbGoal = todaysCarbIntake / dailyRecCarbIntake
+var todaysCalGoal = todaysCalIntake / dailyRecCalIntake
+
+console.log(todaysProGoal)
+console.log(todaysFatGoal)
+console.log(todaysCalGoal)
+
