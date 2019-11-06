@@ -159,33 +159,46 @@ $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase());
 
 //----- Calulating Macros ------//
 
-var userWeight = 150
+var userWeight = 150 // User's weight in lbs
 
 //  The factor to calculate reccomended intakes are pre-set but may be changed by the user if desired.
 
 var dailyRecProIntake = (userWeight * .7) // Needs to be 70% of user weight in grams
 var dailyRecFatIntake = (userWeight * .25) // Needs to be 25% of user weight in grams
-var dailyRecCarbIntake  = (userWeight - dailyRecProIntake - dailyRecFatIntake); // This becomes the remainder of 
-var dailyRecCalIntake = 1600
+var dailyRecCarbIntake  = (userWeight - dailyRecProIntake - dailyRecFatIntake); // Remainder intake from the other two macros
+var dailyRecCalIntake = 2000 // This is also pre-set but may be adjusted by the user.
 
 //  Needs to take one day's worth of food intake from Firebase (within 20191106/Foods) and calculates 
-//  the number of calories, protiens, fat, and carbs eaten that day. 
+//  the number of calories, protiens, fat, and carbs eaten that day.
+//  To Do:
+//  item1Pro + item2Pro + item3Pro = todaysProIntake
+//  item1Fat + item2Fat + item3Fat = todaysFatIntake
+//  item1Carb + item2Carb + item3Carb = todaysCarbIntake
+//  item1Cal + item2Cal + item3Cal = todaysCalIntake
+
+var item1Pro
+var item1Fat
+var item1Carb
+var item1Cal 
 
 //  Needs to take the daily calories
 var todaysProIntake = 23 // Needs to be updated with Firebase snapshot values
-var todaysFatIntake = 15
+var todaysFatIntake = 15 //
 var todaysCarbIntake = 20
 var todaysCalIntake = 1500
 
-//  Needs to show how far along a user is in their daily goal.
+//  Push all these variables into an array with the date to store into analytics for future use.
 
-//  Average cal, carb, fat, pro intake over X days. Take the data within a range of dates (20191102 through 20191106)
-//  and compare it against today's intake.
+//  Needs to show how far along a user is in their daily goal.
 
 var todaysProGoal = todaysProIntake / dailyRecProIntake
 var todaysFatGoal = todaysFatIntake / dailyRecFatIntake 
-var todaysCarbGoal = todaysCarbIntake / dailyRecCarbIntake
+// var todaysCarbGoal = todaysCarbIntake / dailyRecCarbIntake // Carb goals are hard to match within the graph.
+// Maybe use a remainder function so the 
 var todaysCalGoal = todaysCalIntake / dailyRecCalIntake
+
+//  Average cal, carb, fat, pro intake over X days. Take the data within a range of dates (20191102 through 20191106)
+//  and compare it against today's intake.
 
 console.log(todaysProGoal)
 console.log(todaysFatGoal)
