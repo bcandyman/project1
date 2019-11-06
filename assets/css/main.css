@@ -224,9 +224,19 @@ html, body{
 
 
 .nav-wrapper{
-      display: flex;
+    display: flex;
     justify-content: space-between;
     align-content:center ;
+    
+} 
+
+.reports-wrapper{
+    display: flex;
+    position: absolute;
+    bottom:20px;
+    justify-content:center;
+    align-content:bottom ;
+    color: white;
     
 } 
 
@@ -327,6 +337,13 @@ align-items:center;
     text-align: center;
     z-index:-1;
     
+}
+
+.text5{
+    color:white;
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+
 }
 .sign{
     color:rgb(167, 167, 167);
