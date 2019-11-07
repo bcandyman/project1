@@ -21,6 +21,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var userDatabase 
 var userData={}
+var todaysDate = getDate(0,"YYYYMMDD")
 
 
 
@@ -30,30 +31,6 @@ function getDate(dayOffset, format){
     return moment().add(dayOffset,"day").format(format)
 }
 
-
-
-//This function returns the next open food slot in the user's database 
-function getFoodItemIndex(){
-
-    var todaysDate = getDate(0,"YYYYMMDD");
-
-    if (!(todaysDate in userData)){
-        return 1
-    }
-
-    var todaysFoodObject = userData[todaysDate].Foods;
-    var i = 1
-
-    while(i<=30){
-        var keyName = "item-" + i
-        if (!(keyName in todaysFoodObject)){
-            break
-        }
-        i++
-    }
-    console.log("next item should be " + i)
-    return i
-}
 
 
 function populateFoodItems(objFood){
@@ -75,14 +52,6 @@ function populateFoodItems(objFood){
         //append newly created anchor tag to dropdown menu
         $(".returnedFoodItems").append(newDiv)
     }
-}
-
-
-
-
-function addItemDatabase(foodObj){
-    console.log("Add item to database")
-    console.log(itemsToDatabase)
 }
 
 
@@ -112,37 +81,14 @@ $("#submit").on("click",function(){
 
 
 
-
-
-
-
-
-
-
 $(document).on("click", ".searched-item", function(){
 
     //retrieve data-searchedfooditem value and set to the item user has clicked in the drop down
     var itemClicked = $(this).attr("data-searchedfooditem")
     var myFoodItem = nutritionCallResults.hits[itemClicked]
-    console.log(itemClicked)
 
-     //Create div and apply applicable attributes
-     var newDiv = $("<div>")
-     newDiv.addClass("selected-item")
-     newDiv.text(myFoodItem.fields.item_name)
-     newDiv.append($("<hr>"))
-
-     //append newly created div to returnedFoodItems class
-     $(".selectedFoodItems").prepend(newDiv)
-     $(".returnedFoodItems").empty()
-
-
-    itemsToDatabase.push(myFoodItem.fields)
-    console.log("itemsToDatabase: " + itemsToDatabase)
-    console.log(itemsToDatabase[0])
+    populateSelectedItemsDiv(myFoodItem.fields)
 })
-
-
 
 
 
@@ -150,20 +96,51 @@ $(document).on("click", ".searched-item", function(){
 $("#search").on("click",function(){
     $(".selectedFoodItems").empty()
     $(".returnedFoodItems").empty()
+
+    if (todaysDate in userData){
+        var userFoodData = userData[todaysDate]["Foods"]
+        var foodItemCount = Object.keys(userFoodData).length 
+        for ( var i = 0; i< foodItemCount; i++){
+            var foodItem = Object.keys(userFoodData)[i];
+            populateSelectedItemsDiv(userFoodData[foodItem])
+        }
+    }
 })
+
+
+
+
+function populateSelectedItemsDiv(foodObj){
+    console.log(foodObj.item_name)
+    var newDiv = $("<div>")
+     newDiv.addClass("selected-item")
+     newDiv.text(foodObj.item_name)
+     newDiv.append($("<hr>"))
+
+     //append newly created div to returnedFoodItems class
+     $(".selectedFoodItems").prepend(newDiv)
+     $(".returnedFoodItems").empty()
+
+
+    itemsToDatabase.push(foodObj)
+}
 
 
 
 
 
 $("#close").on("click",function(){
+
+    database.ref(userName + "/" + todaysDate + "/Foods/").remove()
     var i = 0
     itemsToDatabase.forEach(function(){
         var objValue = itemsToDatabase[i]
-        database.ref(userName + "/" + getDate(0,"YYYYMMDD") + "/Foods/" + "item-" + getFoodItemIndex()).set(objValue)
+        database.ref(userName + "/" + todaysDate + "/Foods/" + "item-" + (i+1) ).set(objValue)
+
 
         i++
     })
+    console.log("items to database: " + itemsToDatabase)
     itemsToDatabase=[]
 })
 
@@ -199,38 +176,23 @@ database.ref().once("value", function(snapshot){
             }
 
         userDatabase = database.ref(userName)   
-        console.log("++++++")
-        console.log(database)
-        console.log(userDatabase)     
+
     }
     else{
         userDatabase = database.ref(userName).set({
-            joinDate: getDate(0,"YYYYMMDD"),
+            joinDate: todaysDate,
             analytics:"",
         })
     }
-    userData=snapshot.child(userName).val()
-    console.log("---userData----")
-    console.log(userData)
-    console.log("---userData----")
 })
 
 
-
-
-database.ref(userName).on("value", function(snapshot){
-    userData=snapshot.val()
-})
-
-
-// database.ref(userName+"/test").remove()
-// database.ref(userName+"/test").update({
-//     test:"Test-Item"
-// })
 
 
 setTimeout(() => {
-    // getFoodItemIndex()
+    database.ref(userName).on("value", function(snapshot){
+        userData=snapshot.val()
+    })
 }, 2000);
 
 
