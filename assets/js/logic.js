@@ -146,6 +146,14 @@ $("#close").on("click",function(){
 
 
 
+$("#foodSearch").on("keypress", function(event){
+    if (event.keyCode === 13){
+        $("#submit").click()
+    }
+})
+
+
+
 
 //print dates on cards
 $("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"))
