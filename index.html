@@ -28,7 +28,7 @@
 
     <!-- moment cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    
+
     <!-- firebase database -->
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
@@ -46,7 +46,15 @@
                     <a class="nav-link nav-buttons" href="index.html">Entries</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link nav-buttons" href="#">Profile</a>
+                    <a class="nav-link nav-buttons" href="profile.html">Profile</a>
+                </li>
+            </ul>
+            <ul class="nav justify-content-center">
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="">Weekly</a>
+                </li>
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="">Monthly</a>
                 </li>
             </ul>
         </div>
@@ -74,13 +82,13 @@
                         </div>
                     </div>
                     <div class="back">
-                        <input type="text" id="foodSearch" placeholder="Search">
+                        <input type="text" id="foodSearch" class="search_input" placeholder="Search">
                         <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
                         <div class="foodItems">
-                            <div class= "selectedFoodItems">
+                            <div class="selectedFoodItems">
                                 <!-- div for items that have been selected by the user -->
                             </div>
-                            <div class= "returnedFoodItems">
+                            <div class="returnedFoodItems">
                                 <!-- div for items that have been returned by the Ajax call -->
                             </div>
                         </div>
@@ -153,11 +161,9 @@
                 &#8250
             </div>
         </div>
-        <div>
-            <a class="title">WAYE-T<a>
-        </div>
 
     </div>
+
 
     <script src="assets/js/logic.js"></script>
     <script src="assets/js/script.js"></script>

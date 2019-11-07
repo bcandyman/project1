@@ -14,6 +14,21 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#card4").flip({
+        trigger: 'manual'
+    });
+    $("#card5").flip({
+        trigger: 'manual'
+    });
+    $("#card6").flip({
+        trigger: 'manual'
+    });
+
+    $("#card7").flip({
+        trigger: 'manual'
+    });
+
+
     $("#welcome-card").flip({
         trigger: 'manual'
     });
@@ -26,8 +41,16 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#pro-card").flip({
+        trigger: 'manual'
+    });
+
     $("#new-acct").click(function () {
         $("#welcome-card").flip(true);
+    });
+
+    $("#edi-pro").click(function () {
+        $("#pro-card").flip(true);
     });
 
     $("#search").click(function () {
@@ -60,10 +83,13 @@ $(document).ready(function () {
         $("#card3").flip(false);
     });
 
-    $("#close4").click(function () {
+    $("#submit2").click(function () {
         $("#welcome-card").flip(false);
     });
 
+    $("#submit2").click(function () {
+        $("#pro-card").flip(false);
+    });
 
     //////funtion for creating carousel //////////////////////////////
 
@@ -175,4 +201,9 @@ $(document).ready(function () {
         chart.draw(data, options);
     }
 
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
 });
