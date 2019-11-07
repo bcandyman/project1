@@ -14,6 +14,21 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#card4").flip({
+        trigger: 'manual'
+    });
+    $("#card5").flip({
+        trigger: 'manual'
+    });
+    $("#card6").flip({
+        trigger: 'manual'
+    });
+
+    $("#card7").flip({
+        trigger: 'manual'
+    });
+
+
     $("#welcome-card").flip({
         trigger: 'manual'
     });
@@ -186,4 +201,9 @@ $(document).ready(function () {
         chart.draw(data, options);
     }
 
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
 });

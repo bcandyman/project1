@@ -249,9 +249,16 @@ align-items:flex-end;
 .donut-box{
     display: flex;
     justify-content:center;
-align-items:center;
+    align-items:center;
+    flex-direction: row;
 
 
+}
+
+.weekly-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .donut{
