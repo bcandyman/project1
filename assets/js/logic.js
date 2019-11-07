@@ -56,6 +56,39 @@ function populateFoodItems(objFood){
 
 
 
+function getDataAttr(attr){
+
+    var int = 0
+    var foodObj = userData[todaysDate]["Foods"]
+    
+    for (key in foodObj){
+        console.log(foodObj[key][attr])
+        int += foodObj[key][attr]
+    }
+    
+    return int
+
+}
+
+
+
+function populateSelectedItemsDiv(foodObj){
+    console.log(foodObj.item_name)
+    var newDiv = $("<div>")
+     newDiv.addClass("selected-item")
+     newDiv.text(foodObj.item_name)
+     newDiv.append($("<hr>"))
+
+     //append newly created div to returnedFoodItems class
+     $(".selectedFoodItems").prepend(newDiv)
+     $(".returnedFoodItems").empty()
+
+
+    itemsToDatabase.push(foodObj)
+}
+
+
+
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
 $("#submit").on("click",function(){
@@ -110,20 +143,7 @@ $("#search").on("click",function(){
 
 
 
-function populateSelectedItemsDiv(foodObj){
-    console.log(foodObj.item_name)
-    var newDiv = $("<div>")
-     newDiv.addClass("selected-item")
-     newDiv.text(foodObj.item_name)
-     newDiv.append($("<hr>"))
 
-     //append newly created div to returnedFoodItems class
-     $(".selectedFoodItems").prepend(newDiv)
-     $(".returnedFoodItems").empty()
-
-
-    itemsToDatabase.push(foodObj)
-}
 
 
 
@@ -131,7 +151,10 @@ function populateSelectedItemsDiv(foodObj){
 
 $("#close").on("click",function(){
 
+    database.ref(userName).off()
     database.ref(userName + "/" + todaysDate + "/Foods/").remove()
+    attachUserEventListener()
+
     var i = 0
     itemsToDatabase.forEach(function(){
         var objValue = itemsToDatabase[i]
@@ -198,11 +221,16 @@ database.ref().once("value", function(snapshot){
 
 
 setTimeout(() => {
-    database.ref(userName).on("value", function(snapshot){
-        userData=snapshot.val()
-    })
+    attachUserEventListener()
 }, 2000);
 
+
+function attachUserEventListener(){
+    database.ref(userName).on("value", function(snapshot){
+        userData=snapshot.val()
+        console.log(getDataAttr("nf_sugars"))
+    })
+}
 
 
 
