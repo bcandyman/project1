@@ -30,8 +30,8 @@ var dailyFibers = 1
 var dailyProteins = 1
 
 
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+    // google.charts.load('current', { 'packages': ['corechart'] });
+    // google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
@@ -63,11 +63,11 @@ var dailyProteins = 1
         chart.draw(data, options);
     }
 
-    var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    });
+    // var myDoughnutChart = new Chart(ctx, {
+    //     type: 'doughnut',
+    //     data: data,
+    //     options: options
+    // });
 
 
 
@@ -108,8 +108,10 @@ function getDataAttr(attr){
     var foodObj = userData[todaysDate]["Foods"]
     
     for (key in foodObj){
-        console.log(foodObj[key][attr])
-        int += foodObj[key][attr]
+        if (!isNaN(foodObj[key][attr])){
+            console.log(foodObj[key][attr])
+            int += foodObj[key][attr]
+        }
     }
     
     return int
@@ -276,13 +278,20 @@ function attachUserEventListener(){
         userData=snapshot.val()
 
         dailyWaters = getDataAttr("nf_water_grams")
+        console.log("dailyWaters: " + dailyWaters)
         dailyCarbs = getDataAttr("nf_total_carbohydrate")
+        console.log("dailyCarbs: " + dailyCarbs)
         dailyFats = getDataAttr("nf_total_fat")
+        console.log("dailyFats: " + dailyFats)
         dailyFibers = getDataAttr("nf_dietary_fiber")
+        console.log("dailyFibers: " + dailyFibers)
         dailyProteins = getDataAttr("nf_protein")
+        console.log("dailyProteins: " + dailyProteins)
 
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
-        console.log(getDataAttr("nf_sugars"))
+        // console.log(getDataAttr("nf_sugars"))
     })
 }
 
