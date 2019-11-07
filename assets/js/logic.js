@@ -23,6 +23,52 @@ var userDatabase
 var userData={}
 var todaysDate = getDate(0,"YYYYMMDD")
 
+var dailyWaters = 1
+var dailyCarbs = 1
+var dailyFats = 1
+var dailyFibers = 1
+var dailyProteins = 1
+
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Food', 'Total per Day'],
+            ['Water', dailyWaters],
+            ['Carbs', dailyCarbs],
+            ['Fats', dailyFats],
+            ['Fiber', dailyFibers],
+            ['Proteins', dailyProteins]
+        ]);
+
+        var options = {
+            backgroundColor: 'transparent',
+            pieHole: 0.92,
+            colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+            pieSliceBorderColor: "#5A5A5A",
+            outlineColor: "0",
+            pieSliceBorderColor: "transparent",
+
+            pieSliceTextStyle: {
+                color: 'none'
+            },
+
+            legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
+        chart.draw(data, options);
+    }
+
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
+
 
 
 
@@ -228,6 +274,14 @@ setTimeout(() => {
 function attachUserEventListener(){
     database.ref(userName).on("value", function(snapshot){
         userData=snapshot.val()
+
+        dailyWaters = getDataAttr("nf_water_grams")
+        dailyCarbs = getDataAttr("nf_total_carbohydrate")
+        dailyFats = getDataAttr("nf_total_fat")
+        dailyFibers = getDataAttr("nf_dietary_fiber")
+        dailyProteins = getDataAttr("nf_protein")
+
+
         console.log(getDataAttr("nf_sugars"))
     })
 }
