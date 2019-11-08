@@ -18,6 +18,10 @@ html, body{
     border-radius: 1px;
 }
 
+.carousel-center{
+    display: flex;
+    justify-content: center;
+}
 
 .header-container {
     display: flex;
@@ -165,6 +169,19 @@ html, body{
     font-family: 'Quicksand', sans-serif;
 
 }
+
+.pre-2{
+    position: relative;
+    font-size: 75px;
+    color:white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100%;
+    bottom:150px;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
 #pre:hover{
     cursor: pointer;
 }
@@ -224,9 +241,19 @@ html, body{
 
 
 .nav-wrapper{
-      display: flex;
+    display: flex;
     justify-content: space-between;
     align-content:center ;
+    
+} 
+
+.reports-wrapper{
+    display: flex;
+    position: absolute;
+    bottom:20px;
+    justify-content:center;
+    align-content:bottom ;
+    color: white;
     
 } 
 
@@ -239,9 +266,16 @@ align-items:flex-end;
 .donut-box{
     display: flex;
     justify-content:center;
-align-items:center;
+    align-items:center;
+    flex-direction: row;
 
 
+}
+
+.weekly-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .donut{
@@ -327,6 +361,13 @@ align-items:center;
     text-align: center;
     z-index:-1;
     
+}
+
+.text5{
+    color:white;
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+
 }
 .sign{
     color:rgb(167, 167, 167);
