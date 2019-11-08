@@ -171,12 +171,13 @@ html, body{
 }
 
 .pre-2{
-    display: flex;
+    position: relative;
     font-size: 75px;
     color:white;
     text-align: center;
     line-height: 30px;
     border-radius: 100%;
+    bottom:150px;
     font-family: 'Quicksand', sans-serif;
 
 }

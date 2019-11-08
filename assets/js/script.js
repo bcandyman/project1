@@ -176,10 +176,7 @@ $(document).ready(function () {
         var data = google.visualization.arrayToDataTable([
             ['Food', 'Total per Day'],
             ['Water', 11],
-            ['Carbs', 2],
-            ['Fats', 2],
-            ['Fiber', 2],
-            ['Proteins', 7]
+
         ]);
 
         var options = {
@@ -197,7 +194,7 @@ $(document).ready(function () {
             legend: 'none'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
         chart.draw(data, options);
     }
 
