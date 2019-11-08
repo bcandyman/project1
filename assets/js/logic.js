@@ -185,9 +185,9 @@ var item1Carb
 var item1Cal 
 
 //  Needs to take the daily calories
-var todaysProIntake = 23    // Needs to be updated with Firebase snapshot values
-var todaysFatIntake = 15    // Needs to be updated with Firebase snapshot values
-var todaysCarbIntake = 20   // Needs to be updated with Firebase snapshot values
+var todaysProIntake = 9    // This is a local variable which will be calculated and pushed to the analytics array for each user
+var todaysFatIntake = 20    // Needs to be updated with Firebase snapshot values
+var todaysCarbIntake = 4   // Needs to be updated with Firebase snapshot values
 var todaysCalIntake = 1500  // Needs to be updated with Firebase snapshot values
 
 //  Push all these variables into an array with the date to store into analytics for future use.
