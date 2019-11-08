@@ -102,10 +102,10 @@ function populateFoodItems(objFood){
 
 
 
-function getDataAttr(attr){
-
+function getDataAttr(attr,date){
+    console.log("date: " + date)
     var int = 0
-    var foodObj = userData[todaysDate]["Foods"]
+    var foodObj = userData[date]["Foods"]
     
     for (key in foodObj){
         if (!isNaN(foodObj[key][attr])){
@@ -277,15 +277,17 @@ function attachUserEventListener(){
     database.ref(userName).on("value", function(snapshot){
         userData=snapshot.val()
 
-        dailyWaters = getDataAttr("nf_water_grams")
+        console.log(todaysDate)
+
+        dailyWaters = getDataAttr("nf_water_grams",todaysDate)
         console.log("dailyWaters: " + dailyWaters)
-        dailyCarbs = getDataAttr("nf_total_carbohydrate")
+        dailyCarbs = getDataAttr("nf_total_carbohydrate",todaysDate)
         console.log("dailyCarbs: " + dailyCarbs)
-        dailyFats = getDataAttr("nf_total_fat")
+        dailyFats = getDataAttr("nf_total_fat", todaysDate)
         console.log("dailyFats: " + dailyFats)
-        dailyFibers = getDataAttr("nf_dietary_fiber")
+        dailyFibers = getDataAttr("nf_dietary_fiber", todaysDate)
         console.log("dailyFibers: " + dailyFibers)
-        dailyProteins = getDataAttr("nf_protein")
+        dailyProteins = getDataAttr("nf_protein",todaysDate)
         console.log("dailyProteins: " + dailyProteins)
 
         google.charts.load('current', { 'packages': ['corechart'] });
