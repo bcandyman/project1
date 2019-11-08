@@ -3,55 +3,97 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Arbutus+Slab|DM+Serif+Text|Libre+Baskerville|Neuton|Rufina&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=Abel|Comfortaa|Montserrat|Pathway+Gothic+One|Quicksand|Roboto|Yeseva+One&display=swap"
-        rel="stylesheet">
+    <title>Food API Test</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet">
 
-    <script src="assets/js/script.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-    <link href="assets/css/main.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="assets/css/main.css">
 
+    <!-- moment cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
 
 <body>
     <div id="background" class="background">
-        <div id="main" class="flex-container">
-            <div class="header">
-                <p></p>
-                <p></p>
-            </div>
+        <div class="header-container">
+            <p class="title">WAYE</p>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link nav-buttons" href="login.html">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="index.html">Entries</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="profile.html">Profile</a>
+                </li>
+            </ul>
+            <ul class="nav justify-content-center">
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="weekly.html">Weekly</a>
+                </li>
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="">Monthly</a>
+                </li>
+            </ul>
+        </div>
+        <div id="main" class="container">
             <div id="side1">
                 <div id="card">
                     <div class="front">
                         <div class="wrapper">
-                            <p><span class="day" id="today">11 | 01</span>
-                                <span class="date">Today</span>
-                                <span id="day" class="weekday">FRI</span></p>
+                            <div class="card-headerx">
+                                <p class="day" id="todayDate"></p>
+                                <p class="date">Today</p>
+                                <p class="weekday" id="todayWeekdayName"></p>
+                            </div>
                             <p class="sign" id="user-sign">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure
                                 of yourself,
                                 take a leap
                                 forward today!</p>
-                            <p id="donut_single" class="donut"></p>
-                            <p class="inside-value">385</p>
-                            <p class="inside-title">Daily Calories</p>
-                            <p class="text" id="search">SEARCH</p>
+                            <div class="donut-box">
+                                <p id="donut_single" class="donut"></p>
+                                <p class="inside-value">385</p>
+                                <p class="inside-title">Total Calories</p>
+                                <p class="text2" id="search">SEARCH</p>
+                            </div>
                         </div>
                     </div>
                     <div class="back">
-                        <br>
-                        <input placeholder="Search">
+                        <input type="text" id="foodSearch" class="search_input" placeholder="Search">
                         <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                        <div class="foodItems">
+                            <div class="selectedFoodItems">
+                                <!-- div for items that have been selected by the user -->
+                            </div>
+                            <div class="returnedFoodItems">
+                                <!-- div for items that have been returned by the Ajax call -->
+                            </div>
+                        </div>
                         <p></p>
-                        <p class="text" id="close">Close</p>
+                        <p class="text2" id="close">Close</p>
                     </div>
                 </div>
             </div>
@@ -59,23 +101,26 @@
                 <div id="card2">
                     <div class="front">
                         <div class="wrapper2">
-                            <p><span class="day" id="Yesterday">11 | 02</span>
-                                <span class="date2">Yesterday</span>
-                                <span id="day2" class="weekday">FRI</span></p>
+                            <div class="card-headerx">
+                                <p class="day" id="yesterdayDate"></p>
+                                <p class="date2">Yesterday</p>
+                                <p class="weekday" id="yesterdayWeekdayName"></p>
+                            </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
                                 yourself,
                                 take a leap
                                 forward today!</p>
-                            <div id="donut_single2" class="donut"></div>
-                            <div class="inside-value">000</div>
-                            <div class="inside-title">Daily Calories</div>
-                            <p class="text" id="entries1">ENTRIES</p>
+                            <div class="donut-box">
+                                <p id="donut_single" class="donut"></p>
+                                <p class="inside-value">2102</p>
+                                <p class="inside-title">Total Calories</p>
+                                <p id="entries1" class="text2">ENTRIES</p>
+                            </div>
                         </div>
                     </div>
                     <div class="back">
-
-                        <p class="text" id="close2">Close</p>
+                        <p class="text2" id="close2">Close</p>
                     </div>
                 </div>
             </div>
@@ -83,28 +128,31 @@
                 <div id="card3">
                     <div class="front">
                         <div class="wrapper2">
-                            <p><span class="day" id="Tomorrow">11 | 02</span>
-                                <span class="date2">Tomorrow</span>
-                                <span id="day2" class="weekday">FRI</span></p>
+                            <div class="card-headerx">
+                                <p class="day" id="tomorrowDate"></p>
+                                <p class="date2">Tomorrow</p>
+                                <p class="weekday" id="tomorrowWeekdayName"></p>
+                            </div>
                             <p class="sign" id="user-sign2">TAURUS</p>
                             <p class="inside" id="horoscope">Even if you're not one hundred percent sure of
                                 yourself,
                                 take a leap
                                 forward today!</p>
-                            <div id="donut_single2" class="donut"></div>
-                            <div class="inside-value">000</div>
-                            <div class="inside-title">Daily Calories</div>
-                            <p class="text" id="entries2">ENTRIES</p>
+                            <div class="donut-box">
+                                <p id="donut_single" class="donut"></p>
+                                <p class="inside-value">2100</p>
+                                <p class="inside-title">Calorie Goals</p>
+                                <p class="text2" id="entries2">ENTRIES</p>
+                            </div>
                         </div>
                     </div>
                     <div class="back">
-
-                        <p class="text" id="close3">Close</p>
+                        <p class="text2" id="close3">Close</p>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
         <div class="nav-wrapper">
             <div id="pre">
                 &#8249
@@ -113,9 +161,12 @@
                 &#8250
             </div>
         </div>
-        <div>
-            <a class="title">WAYE-T<a>
-        </div>
+
+    </div>
+
+
+    <script src="assets/js/logic.js"></script>
+    <script src="assets/js/script.js"></script>
 
 </body>
 

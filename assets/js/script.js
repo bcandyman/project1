@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#donut_single").toggleClass("rotate-in-2-cw");
+    $("#donut_single").toggleClass("rotate-in-center");
 
     $("#card").flip({
         trigger: 'manual'
@@ -14,8 +14,49 @@ $(document).ready(function () {
         trigger: 'manual'
     });
 
+    $("#card4").flip({
+        trigger: 'manual'
+    });
+    $("#card5").flip({
+        trigger: 'manual'
+    });
+    $("#card6").flip({
+        trigger: 'manual'
+    });
+
+    $("#card7").flip({
+        trigger: 'manual'
+    });
+
+
+    $("#welcome-card").flip({
+        trigger: 'manual'
+    });
+
+    $("#wel-card-2").flip({
+        trigger: 'manual'
+    });
+
+    $("#wel-card-3").flip({
+        trigger: 'manual'
+    });
+
+    $("#pro-card").flip({
+        trigger: 'manual'
+    });
+
+    $("#new-acct").click(function () {
+        $("#welcome-card").flip(true);
+    });
+
+    $("#edi-pro").click(function () {
+        $("#pro-card").flip(true);
+    });
+
     $("#search").click(function () {
         $("#card").flip(true);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
     });
 
     $("#close").click(function () {
@@ -24,6 +65,8 @@ $(document).ready(function () {
 
     $("#entries1").click(function () {
         $("#card2").flip(true);
+        $("#card").flip(false);
+        $("#card3").flip(false);
     });
 
     $("#close2").click(function () {
@@ -32,13 +75,21 @@ $(document).ready(function () {
 
     $("#entries2").click(function () {
         $("#card3").flip(true);
+        $("#card").flip(false);
+        $("#card2").flip(false);
     });
 
     $("#close3").click(function () {
         $("#card3").flip(false);
     });
 
+    $("#submit2").click(function () {
+        $("#welcome-card").flip(false);
+    });
 
+    $("#submit2").click(function () {
+        $("#pro-card").flip(false);
+    });
 
     //////funtion for creating carousel //////////////////////////////
 
@@ -72,6 +123,10 @@ $(document).ready(function () {
             $("#side1").css("transform", "translateX(40px) scale(1.0)");
             flag = 0;
         }
+        $("#card").flip(false);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
+        $("#welcome-card").flip(false);
     });
 
     $("#pre").click(function () {
@@ -103,42 +158,52 @@ $(document).ready(function () {
             $("#side3").css("transform", "translateX(40px) scale(1.0)");
             flag = 1;
         }
+        $("#card").flip(false);
+        $("#card2").flip(false);
+        $("#card3").flip(false);
+        $("#welcome-card").flip(false);
+
     });
 
 
     //////code for creating donut pie chart///////////////////////////////
 
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+//     google.charts.load('current', { 'packages': ['corechart'] });
+//     google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+//     function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-            ['Food', 'Total per Day'],
-            ['Water', 11],
-            ['Carbs', 2],
-            ['Fats', 2],
-            ['Fiber', 2],
-            ['Proteins', 7]
-        ]);
+//         var data = google.visualization.arrayToDataTable([
+//             ['Food', 'Total per Day'],
+//             ['Water', 11],
+//             ['Carbs', 2],
+//             ['Fats', 2],
+//             ['Fiber', 2],
+//             ['Proteins', 7]
+//         ]);
 
-        var options = {
-            backgroundColor: 'transparent',
-            pieHole: 0.92,
-            colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
-            pieSliceBorderColor: "#5A5A5A",
-            outlineColor: "0",
-            pieSliceBorderColor: "transparent",
+//         var options = {
+//             backgroundColor: 'transparent',
+//             pieHole: 0.92,
+//             colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+//             pieSliceBorderColor: "#5A5A5A",
+//             outlineColor: "0",
+//             pieSliceBorderColor: "transparent",
 
-            pieSliceTextStyle: {
-                color: 'none'
-            },
+//             pieSliceTextStyle: {
+//                 color: 'none'
+//             },
 
-            legend: 'none'
-        };
+//             legend: 'none'
+//         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
-        chart.draw(data, options);
-    }
+//         var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
+//         chart.draw(data, options);
+//     }
 
+//     var myDoughnutChart = new Chart(ctx, {
+//         type: 'doughnut',
+//         data: data,
+//         options: options
+//     });
 });
