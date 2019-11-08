@@ -18,6 +18,10 @@ html, body{
     border-radius: 1px;
 }
 
+.carousel-center{
+    display: flex;
+    justify-content: center;
+}
 
 .header-container {
     display: flex;
@@ -165,6 +169,18 @@ html, body{
     font-family: 'Quicksand', sans-serif;
 
 }
+
+.pre-2{
+    display: flex;
+    font-size: 75px;
+    color:white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100%;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
 #pre:hover{
     cursor: pointer;
 }
