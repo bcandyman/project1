@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    $("#donut_single").toggleClass("rotate-in-center");
-
     $("#card").flip({
         trigger: 'manual'
     });
@@ -168,42 +166,42 @@ $(document).ready(function () {
 
     //////code for creating donut pie chart///////////////////////////////
 
-//     google.charts.load('current', { 'packages': ['corechart'] });
-//     google.charts.setOnLoadCallback(drawChart);
+    //     google.charts.load('current', { 'packages': ['corechart'] });
+    //     google.charts.setOnLoadCallback(drawChart);
 
-//     function drawChart() {
+    //     function drawChart() {
 
-//         var data = google.visualization.arrayToDataTable([
-//             ['Food', 'Total per Day'],
-//             ['Water', 11],
-//             ['Carbs', 2],
-//             ['Fats', 2],
-//             ['Fiber', 2],
-//             ['Proteins', 7]
-//         ]);
+    //         var data = google.visualization.arrayToDataTable([
+    //             ['Food', 'Total per Day'],
+    //             ['Water', 11],
+    //             ['Carbs', 2],
+    //             ['Fats', 2],
+    //             ['Fiber', 2],
+    //             ['Proteins', 7]
+    //         ]);
 
-//         var options = {
-//             backgroundColor: 'transparent',
-//             pieHole: 0.92,
-//             colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
-//             pieSliceBorderColor: "#5A5A5A",
-//             outlineColor: "0",
-//             pieSliceBorderColor: "transparent",
+    //         var options = {
+    //             backgroundColor: 'transparent',
+    //             pieHole: 0.92,
+    //             colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+    //             pieSliceBorderColor: "#5A5A5A",
+    //             outlineColor: "0",
+    //             pieSliceBorderColor: "transparent",
 
-//             pieSliceTextStyle: {
-//                 color: 'none'
-//             },
+    //             pieSliceTextStyle: {
+    //                 color: 'none'
+    //             },
 
-//             legend: 'none'
-//         };
+    //             legend: 'none'
+    //         };
 
-//         var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
-//         chart.draw(data, options);
-//     }
+    //         var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
+    //         chart.draw(data, options);
+    //     }
 
-//     var myDoughnutChart = new Chart(ctx, {
-//         type: 'doughnut',
-//         data: data,
-//         options: options
-//     });
+    //     var myDoughnutChart = new Chart(ctx, {
+    //         type: 'doughnut',
+    //         data: data,
+    //         options: options
+    //     });
 });

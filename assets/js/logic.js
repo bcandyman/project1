@@ -8,7 +8,7 @@ var firebaseConfig = {
     messagingSenderId: "346428803689",
     appId: "1:346428803689:web:bd8036633443512c56f0f8",
     measurementId: "G-KLHSX37FDS"
-  };
+};
 var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
@@ -19,9 +19,9 @@ var foodItemIndex = 0
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-var userDatabase 
-var userData={}
-var todaysDate = getDate(0,"YYYYMMDD")
+var userDatabase
+var userData = {}
+var todaysDate = getDate(0, "YYYYMMDD")
 
 var dailyWaters = 1
 var dailyCarbs = 1
@@ -30,48 +30,51 @@ var dailyFibers = 1
 var dailyProteins = 1
 
 
-    // google.charts.load('current', { 'packages': ['corechart'] });
-    // google.charts.setOnLoadCallback(drawChart);
+// google.charts.load('current', { 'packages': ['corechart'] });
+// google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-            ['Food', 'Total per Day'],
-            ['Water', dailyWaters],
-            ['Carbs', dailyCarbs],
-            ['Fats', dailyFats],
-            ['Fiber', dailyFibers],
-            ['Proteins', dailyProteins]
-        ]);
+    var data = google.visualization.arrayToDataTable([
+        ['Food', 'Total per Day'],
+        ['Water', dailyWaters],
+        ['Carbs', dailyCarbs],
+        ['Fats', dailyFats],
+        ['Fiber', dailyFibers],
+        ['Proteins', dailyProteins]
+    ]);
 
-        var options = {
-            backgroundColor: 'transparent',
-            pieHole: 0.92,
-            colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
-            pieSliceBorderColor: "#5A5A5A",
-            outlineColor: "0",
-            pieSliceBorderColor: "transparent",
+    var options = {
+        backgroundColor: 'transparent',
+        pieHole: 0.92,
+        colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+        pieSliceBorderColor: "#5A5A5A",
+        outlineColor: "0",
+        pieSliceBorderColor: "transparent",
 
-            pieSliceTextStyle: {
-                color: 'none'
-            },
+        pieSliceTextStyle: {
+            color: 'none'
+        },
 
-            legend: 'none'
-        };
+        legend: 'none'
+    };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
-        chart.draw(data, options);
-    }
+    var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+    chart.draw(data, options);
+
+    $("#donut_single").toggleClass("rotate-in-center");
+
+}
 
 
 //This function returns date values or days from the given properties
-function getDate(dayOffset, format){
-    return moment().add(dayOffset,"day").format(format)
+function getDate(dayOffset, format) {
+    return moment().add(dayOffset, "day").format(format)
 }
 
 
 
-function populateFoodItems(objFood){
+function populateFoodItems(objFood) {
     //clear items returned by search
     $(".returnedFoodItems").find("*").not(".selected-item").empty()
 
@@ -115,18 +118,18 @@ function populateFoodItems(objFood){
 
 
 
-function getDataAttr(attr,date){
+function getDataAttr(attr, date) {
     console.log("date: " + date)
     var int = 0
     var foodObj = userData[date]["Foods"]
-    
-    for (key in foodObj){
-        if (!isNaN(foodObj[key][attr])){
+
+    for (key in foodObj) {
+        if (!isNaN(foodObj[key][attr])) {
             console.log(foodObj[key][attr])
             int += foodObj[key][attr]
         }
     }
-    
+
     return int
 
 }
@@ -163,7 +166,7 @@ function populateSelectedItemsDiv(foodObj,dataItem){
 
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
-$("#submit").on("click",function(){
+$("#submit").on("click", function () {
 
     //initialize variables
     //foodSearch = the food string the user desires to search
@@ -172,12 +175,12 @@ $("#submit").on("click",function(){
     $("#foodSearch").val("")
     //numOfResults = the number of items the user would like returned
     var numOfResults = 5
-    
+
     $.ajax({
         url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=*&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         // url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=item_name%2Cnf_calories%2Cnf_total_fat%2Cnf_total_carbohydrate%2Cnf_protein%2Cnf_ingredient_statement&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response)
         nutritionCallResults = response
         populateFoodItems(nutritionCallResults)
@@ -186,7 +189,7 @@ $("#submit").on("click",function(){
 
 
 
-$(document).on("click", ".searched-item", function(){
+$(document).on("click", ".searched-item", function () {
 
     //retrieve data-searchedfooditem value and set to the item user has clicked in the drop down
     var itemClicked = $(this).attr("data-searchedfooditem")
@@ -213,10 +216,10 @@ $("#search").on("click",function(){
     $(".selectedFoodItems").empty()
     $(".returnedFoodItems").empty()
 
-    if (todaysDate in userData){
+    if (todaysDate in userData) {
         var userFoodData = userData[todaysDate]["Foods"]
-        var foodItemCount = Object.keys(userFoodData).length 
-        for ( var i = 0; i< foodItemCount; i++){
+        var foodItemCount = Object.keys(userFoodData).length
+        for (var i = 0; i < foodItemCount; i++) {
             var foodItem = Object.keys(userFoodData)[i];
             populateSelectedItemsDiv(userFoodData[foodItem],i + 1)
         }
@@ -232,28 +235,28 @@ $("#search").on("click",function(){
 
 
 
-$("#close").on("click",function(){
+$("#close").on("click", function () {
 
     database.ref(userName).off()
     database.ref(userName + "/" + todaysDate + "/Foods/").remove()
     attachUserEventListener()
 
     var i = 0
-    itemsToDatabase.forEach(function(){
+    itemsToDatabase.forEach(function () {
         var objValue = itemsToDatabase[i]
-        database.ref(userName + "/" + todaysDate + "/Foods/" + "item-" + (i+1) ).set(objValue)
+        database.ref(userName + "/" + todaysDate + "/Foods/" + "item-" + (i + 1)).set(objValue)
 
 
         i++
     })
     console.log("items to database: " + itemsToDatabase)
-    itemsToDatabase=[]
+    itemsToDatabase = []
 })
 
 
 
-$("#foodSearch").on("keypress", function(event){
-    if (event.keyCode === 13){
+$("#foodSearch").on("keypress", function (event) {
+    if (event.keyCode === 13) {
         $("#submit").click()
     }
 })
@@ -262,13 +265,13 @@ $("#foodSearch").on("keypress", function(event){
 
 
 //print dates on cards
-$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"))
+$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0, "DD"))
 $("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase())
 
-$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1,"DD"))
+$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1, "DD"))
 $("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase())
 
-$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"))
+$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1, "DD"))
 $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
 
 
@@ -276,26 +279,26 @@ $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
 
 
 //create user database or set reference if is a returning user
-database.ref().once("value", function(snapshot){
+database.ref().once("value", function (snapshot) {
 
     //if user existing in database
-    if(userName in snapshot.val()){
-        for (key in snapshot.child(userName).val()){
-            if (key.indexOf("test")!==-1){
+    if (userName in snapshot.val()) {
+        for (key in snapshot.child(userName).val()) {
+            if (key.indexOf("test") !== -1) {
                 console.log("Not found")
             }
-            else{
+            else {
                 console.log("Found")
             }
-            }
+        }
 
-        userDatabase = database.ref(userName)   
+        userDatabase = database.ref(userName)
 
     }
-    else{
+    else {
         userDatabase = database.ref(userName).set({
             joinDate: todaysDate,
-            analytics:"",
+            analytics: "",
         })
     }
 })
@@ -308,21 +311,21 @@ setTimeout(() => {
 }, 2000);
 
 
-function attachUserEventListener(){
-    database.ref(userName).on("value", function(snapshot){
-        userData=snapshot.val()
+function attachUserEventListener() {
+    database.ref(userName).on("value", function (snapshot) {
+        userData = snapshot.val()
 
         console.log(todaysDate)
 
-        dailyWaters = getDataAttr("nf_water_grams",todaysDate)
+        dailyWaters = getDataAttr("nf_water_grams", todaysDate)
         console.log("dailyWaters: " + dailyWaters)
-        dailyCarbs = getDataAttr("nf_total_carbohydrate",todaysDate)
+        dailyCarbs = getDataAttr("nf_total_carbohydrate", todaysDate)
         console.log("dailyCarbs: " + dailyCarbs)
         dailyFats = getDataAttr("nf_total_fat", todaysDate)
         console.log("dailyFats: " + dailyFats)
         dailyFibers = getDataAttr("nf_dietary_fiber", todaysDate)
         console.log("dailyFibers: " + dailyFibers)
-        dailyProteins = getDataAttr("nf_protein",todaysDate)
+        dailyProteins = getDataAttr("nf_protein", todaysDate)
         console.log("dailyProteins: " + dailyProteins)
 
         google.charts.load('current', { 'packages': ['corechart'] });
