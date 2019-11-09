@@ -13,7 +13,16 @@ window.onload = function () {
         data: JSON.stringify(data)
     });
 
+    $.get("https://json.astrologyapi.com/v1/", function (data) {
+        $(".result").html(data);
+        alert("Load was performed.");
+    });
+
+
     $("#horoscope").append(request)
 
 
 }
+
+
+
