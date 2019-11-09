@@ -63,24 +63,19 @@ function calcCarbsPercents() {
 }
 
 var dailyCals
-var dailyRecCals = 2000;
+var dailyRecCals
 var dailyRemCals
 function subtractCalPerc() {
     dailyRemCals = (dailyRecCals - dailyCals)
-    console.log("dailyRecCals: " + dailyRecCals)
-    console.log("dailyRemCals: " + dailyRemCals)
+    console.log("Your daily reccomended calorie intake is: " + dailyRecCals + " calories.")
+       
 }
 var dailyCalsPercent
 var dailyCalsPercentLeft
 function calcPercents() {
     dailyCalsPercent = (dailyCals / dailyRecCals) * 100
     dailyCalsPercentLeft = 100 - dailyCalsPercent
-    console.log("dailyCalsPercent: " + dailyCalsPercent)
-    console.log("dailyCalsPercentLeft: " + dailyCalsPercentLeft)
 }
-
-// google.charts.load('current', { 'packages': ['corechart'] });
-// google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     subtractCalPerc()
@@ -153,12 +148,6 @@ function drawChart() {
 
 }
 
-// var myDoughnutChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: data,
-//     options: options
-// });
-
 //This function returns date values or days from the given properties
 function getDate(dayOffset, format) {
     return moment().add(dayOffset, "day").format(format)
@@ -185,16 +174,12 @@ function populateFoodItems(objFood) {
     }
 }
 
-
-
 function getDataAttr(attr, date) {
-    console.log("date: " + date)
     var int = 0
     var foodObj = userData[date]["Foods"]
 
     for (key in foodObj) {
         if (!isNaN(foodObj[key][attr])) {
-            console.log(foodObj[key][attr])
             int += foodObj[key][attr]
         }
     }
@@ -210,10 +195,7 @@ function getAnalyticsDataAttr(attr) {
 
 }
 
-
-
 function populateSelectedItemsDiv(foodObj) {
-    console.log(foodObj.item_name)
     var newDiv = $("<div>")
     newDiv.addClass("selected-item")
     newDiv.text(foodObj.item_name)
@@ -226,8 +208,6 @@ function populateSelectedItemsDiv(foodObj) {
 
     itemsToDatabase.push(foodObj)
 }
-
-
 
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
@@ -246,13 +226,10 @@ $("#submit").on("click", function () {
         // url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=item_name%2Cnf_calories%2Cnf_total_fat%2Cnf_total_carbohydrate%2Cnf_protein%2Cnf_ingredient_statement&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         method: "GET"
     }).then(function (response) {
-        console.log(response)
         nutritionCallResults = response
         populateFoodItems(nutritionCallResults)
     });
 })
-
-
 
 $(document).on("click", ".searched-item", function () {
 
@@ -262,9 +239,6 @@ $(document).on("click", ".searched-item", function () {
 
     populateSelectedItemsDiv(myFoodItem.fields)
 })
-
-
-
 
 $("#search").on("click", function () {
     $(".selectedFoodItems").empty()
@@ -280,15 +254,6 @@ $("#search").on("click", function () {
     }
 })
 
-
-
-
-
-
-
-
-
-
 $("#close").on("click", function () {
 
     database.ref(userName).off()
@@ -303,21 +268,14 @@ $("#close").on("click", function () {
 
         i++
     })
-    console.log("items to database: " + itemsToDatabase)
     itemsToDatabase = []
-    console.log("dailyRemCals: " + dailyRemCals)
 })
-
-
 
 $("#foodSearch").on("keypress", function (event) {
     if (event.keyCode === 13) {
         $("#submit").click()
     }
 })
-
-
-
 
 //print dates on cards
 $("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"));
@@ -329,10 +287,6 @@ $("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase());
 $("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"));
 $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase());
 
-
-
-
-
 //create user database or set reference if is a returning user
 database.ref().once("value", function (snapshot) {
 
@@ -343,7 +297,7 @@ database.ref().once("value", function (snapshot) {
                 console.log("Not found")
             }
             else {
-                console.log("Found")
+                console.log("Welcome back, " + userName)
             }
         }
 
@@ -358,12 +312,9 @@ database.ref().once("value", function (snapshot) {
     }
 })
 
-
-
 setTimeout(() => {
     attachUserEventListener()
 }, 2000);
-
 
 function attachUserEventListener(){
     database.ref(userName).on("value", function(snapshot){
@@ -377,11 +328,8 @@ function attachUserEventListener(){
         dailyRecProteins = getDataAttr("dailyRecProteins",todaysDate)
         dailyCals = getDataAttr("nf_calories",todaysDate)
         dailyRecCals = getAnalyticsDataAttr("dailyRecCals")
-        console.log(dailyRecCals)
-
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
-        // Make additional chart calls for each of the macros
         function roundNumber() {
             dailyCals = Math.floor(dailyCals);
             dailyCalsPercent = Math.floor(dailyCalsPercent);
@@ -390,28 +338,8 @@ function attachUserEventListener(){
         console.log("Rounded Result: " + dailyCals)
         $("#percentage-to-goal").text(dailyCalsPercent);
         $("#calories-eaten").text(dailyCals);
-        // console.log(getDataAttr("nf_sugars"))
     })
 }
-
-
-
-
-
-// database.ref(userName).set("Date")
-
-// var newArr=[] //= ["dayOne", "dayTwo"]
-// var newObj  = {carb:1, fat:2}
-// var newObj2 = {carb:3,fat:4}
-// newObj = NewObject[Key:"value"]
-// newArr["dayOne"]=newObj
-// newArr["dayTwo"]=newObj2
-// console.log(newArr.dayOne.carb)
-// database.ref(userName).set(newArr)
-
-
-//----- Calulating Macros ------//
-
 
 $("#submit2").on("click", function(){
     userWeight = $("#user-weight-input").val(); // User's weight in lbs    
@@ -428,56 +356,3 @@ $("#submit2").on("click", function(){
         dailyRecProteins: dailyRecProteins
         })
 });
-
-
-
-
-
-//  The factor to calculate reccomended intakes are pre-set but may be changed by the user if desired.
-
-// var dailyRecProIntake = (userWeight * .7)   // Needs to be 70% of user weight in grams
-// var dailyRecFatIntake = (userWeight * .25)  // Needs to be 25% of user weight in grams
-// var dailyRecCarbIntake  = (userWeight - dailyRecProIntake - dailyRecFatIntake); // Remainder intake from the other two macros
-// var dailyRecCalIntake = 2000    // This is also pre-set but may be adjusted by the user.
-
-//  Needs to take one day's worth of food intake from Firebase (within 20191106/Foods) and calculates 
-//  the number of calories, Proteins, fat, and carbs eaten that day.
-//  To Do Items:
-//  item1Pro + item2Pro + item3Pro = todaysProIntake
-//  item1Fat + item2Fat + item3Fat = todaysFatIntake
-//  item1Carb + item2Carb + item3Carb = todaysCarbIntake
-//  item1Cal + item2Cal + item3Cal = todaysCalIntake
-//  Create a function which will find items1-X and grab values from within each to put into the below variables.
-//  Create a function that w
-//  Be able to repeat this for each item (Do we need to store the values into variables or can we run the cal)
-
-// var item1Pro
-// var item1Fat
-// var item1Carb
-// var item1Cal 
-
-//  Needs to take the daily calories
-// var todaysProIntake = 9    // This is a local variable which will be calculated and pushed to the analytics array for each user
-// var todaysFatIntake = 20    // Needs to be updated with Firebase snapshot values
-// var todaysCarbIntake = 4   // Needs to be updated with Firebase snapshot values
-// var todaysCalIntake = 1500  // Needs to be updated with Firebase snapshot values
-
-//  Push all these variables into an array with the date to store into analytics for future use.
-
-//  Needs to show how far along a user is in their daily goal.
-
-// var todaysProGoal = todaysProIntake / dailyRecProIntake
-// var todaysFatGoal = todaysFatIntake / dailyRecFatIntake 
-// // var todaysCarbGoal = todaysCarbIntake / dailyRecCarbIntake // Carb goals are hard to match within the graph.
-// // Maybe use a remainder function so the 
-// var todaysCalGoal = todaysCalIntake / dailyRecCalIntake
-
-//  Average cal, carb, fat, pro intake over X days. Take the data within a range of dates (20191102 through 20191106)
-//  and compare it against today's intake.
-
-// console.log(todaysProGoal)
-// console.log(todaysFatGoal)
-// console.log(todaysCalGoal)
-
-// Apply today's intakes into the Google vizualization.
-
