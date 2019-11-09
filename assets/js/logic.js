@@ -51,8 +51,15 @@ function subtractCalPerc() {
     console.log("dailyRecCals: " + dailyRecCals)
     console.log("dailyRemCals: " + dailyRemCals)
 }
-var dailyCalsPercent = (dailyCals / dailyRecCals) * 100
-var dailyCalsPercentLeft = 100 - dailyCalsPercent
+var dailyCalsPercent
+var dailyCalsPercentLeft
+function calcPercents() {
+    dailyCalsPercent = (dailyCals / dailyRecCals) * 100
+    dailyCalsPercentLeft = 100 - dailyCalsPercent
+    console.log("dailyCalsPercent: " + dailyCalsPercent)
+    console.log("dailyCalsPercentLeft: " + dailyCalsPercentLeft)
+}
+
 
 
 // google.charts.load('current', { 'packages': ['corechart'] });
@@ -60,6 +67,7 @@ var dailyCalsPercentLeft = 100 - dailyCalsPercent
 
 function drawChart() {
     subtractCalPerc()
+    calcPercents()
     var calData = new google.visualization.DataTable();
     calData.addColumn('string', 'Calories Eaten Today');
     calData.addColumn('number', 'Calories Left for Today');
