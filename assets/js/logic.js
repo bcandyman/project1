@@ -21,33 +21,29 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var userDatabase 
 var userData={}
+var todaysDate = getDate(0,"YYYYMMDD")
+
 var dailyRecProtiens
 var dailyRecFats
 var dailyRecCarbs
 var dailyRecCals
-var todaysDate = getDate(0,"YYYYMMDD")
-
-var dailyWaters = 1
-var dailyCarbs = 1
-var dailyFats = 1
-var dailyFibers = 1
-var dailyProteins = 1
-
+var dailyCarbs
+var dailyFats
+var dailyProteins
+var dailyCals
 
 // google.charts.load('current', { 'packages': ['corechart'] });
 // google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 
-    var data = google.visualization.arrayToDataTable([
-        ['Food', 'Total per Day'],
-        ['Water', dailyWaters],
-        ['Carbs', dailyCarbs],
-        ['Fats', dailyFats],
-        ['Fiber', dailyFibers],
-        ['Proteins', dailyProteins]
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Calories Eaten Today');
+    data.addColumn('number', 'Calories Left for Today');
+    data.addRows([
+        ['calories', 50],
+        ['calories left', 50]
     ]);
-
     var options = {
         backgroundColor: 'transparent',
         pieHole: 0.92,
@@ -285,16 +281,20 @@ function attachUserEventListener(){
         userData=snapshot.val()
         console.log(userData)
         subtractValues();
-        dailyWaters = getDataAttr("nf_water_grams",todaysDate)
         dailyCarbs = getDataAttr("nf_total_carbohydrate",todaysDate)
-        dailyFats = getDataAttr("nf_total_fat", todaysDate)
-        dailyFibers = getDataAttr("nf_dietary_fiber", todaysDate)
+        dailyRecCarbs = getDataAttr("dailyRecCals",todaysDate)
+        dailyFats = getDataAttr("nf_total_fat",todaysDate)
+        dailyRecFats = getDataAttr("dailyRecFats",todaysDate)
         dailyProteins = getDataAttr("nf_protein",todaysDate)
+        dailyRecProteins = getDataAttr("dailyRecProteins",todaysDate)
+        dailyCals = getDataAttr("nf_calories",todaysDate)
+        dailyRecCals = getDataAttr("dailyRecCals",todaysDate)
+
 
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
         // Make additional chart calls for each of the macros
-
+        $("#calories-eaten").text(dailyCals);
         // console.log(getDataAttr("nf_sugars"))
     })
 }
