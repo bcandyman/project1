@@ -63,14 +63,6 @@ var dailyProteins = 1
         chart.draw(data, options);
     }
 
-    // var myDoughnutChart = new Chart(ctx, {
-    //     type: 'doughnut',
-    //     data: data,
-    //     options: options
-    // });
-
-
-
 
 //This function returns date values or days from the given properties
 function getDate(dayOffset, format){
@@ -83,16 +75,37 @@ function populateFoodItems(objFood){
     //clear items returned by search
     $(".returnedFoodItems").find("*").not(".selected-item").empty()
 
+    
+
     //for each item returned in ajax call
     for (var i = 0; i < objFood.hits.length; i++){
+        var objFoodFields = objFood.hits[i].fields
     
         //create div and apply applicable attributes
-        var newDiv = $("<div>")
+        let newDiv = $("<div>")
+        let tbl = $("<table>")
+        let tblRow = $("<tr>")
+        
+        tbl.addClass("tbl-nutritionInfo text-center")
+        tblRow.append($("<th>").text("Calories"))
+        tblRow.append($("<th>").text("Carbohydrates"))
+        tblRow.append($("<th>").text("Fat"))
+        tblRow.append($("<th>").text("Protein"))
+        tbl.append(tblRow)
+
+        tblRow = ($("<tr>"))
+        tblRow.append($("<td>").text(objFoodFields.nf_calories))
+        tblRow.append($("<td>").text(objFoodFields.nf_total_carbohydrate + "g"))
+        tblRow.append($("<td>").text(objFoodFields.nf_total_fat + "g"))
+        tblRow.append($("<td>").text(objFoodFields.nf_protein + "g"))
+        tbl.append(tblRow)
+
         newDiv.addClass("searched-item")
         newDiv.attr("data-searchedFoodItem", i)
-        newDiv.append($("<p>").html("Item: " + objFood.hits[i].fields.item_name))
-        newDiv.append($("<p>").html("Brand: " + objFood.hits[i].fields.brand_name))
-        newDiv.append($("<p>").html("Serving size/qty: " + objFood.hits[i].fields.nf_serving_size_qty))
+        newDiv.append($("<p>").html("Item: " + objFoodFields.item_name))
+        newDiv.append($("<p>").html("Brand: " + objFoodFields.brand_name))
+        newDiv.append($("<p>").html("Serving size/qty: " + objFoodFields.nf_serving_size_qty))
+        newDiv.append(tbl)
         newDiv.append($("<hr>"))
 
         //append newly created anchor tag to dropdown menu
@@ -120,19 +133,30 @@ function getDataAttr(attr,date){
 
 
 
-function populateSelectedItemsDiv(foodObj){
+function populateSelectedItemsDiv(foodObj,dataItem){
     console.log(foodObj.item_name)
+    
+    itemsToDatabase.push(foodObj)
+    console.log(itemsToDatabase)
+
     var newDiv = $("<div>")
-     newDiv.addClass("selected-item")
-     newDiv.text(foodObj.item_name)
-     newDiv.append($("<hr>"))
+    var btnRemoveItem = $("<button>")
+
+    btnRemoveItem.text("-")
+    btnRemoveItem.addClass("btn-removeItem")
+    btnRemoveItem.attr("data-removeItem",dataItem)
+    newDiv.addClass("selected-item")
+    newDiv.text(foodObj.item_name)
+    
+    newDiv.prepend(btnRemoveItem)
+    newDiv.append($("<hr>"))
 
      //append newly created div to returnedFoodItems class
-     $(".selectedFoodItems").prepend(newDiv)
+     $(".selectedFoodItems").append(newDiv)
      $(".returnedFoodItems").empty()
 
 
-    itemsToDatabase.push(foodObj)
+    
 }
 
 
@@ -168,8 +192,19 @@ $(document).on("click", ".searched-item", function(){
     var itemClicked = $(this).attr("data-searchedfooditem")
     var myFoodItem = nutritionCallResults.hits[itemClicked]
 
-    populateSelectedItemsDiv(myFoodItem.fields)
+    populateSelectedItemsDiv(myFoodItem.fields,itemsToDatabase.length + 1)
 })
+
+
+
+
+$(document).on("click", ".btn-removeItem", function(){
+    var itemToRemove = $(this).attr("data-removeItem")-1
+    
+    itemsToDatabase.splice(itemToRemove,1)
+    $(this).parent().remove()
+})
+
 
 
 
@@ -183,7 +218,7 @@ $("#search").on("click",function(){
         var foodItemCount = Object.keys(userFoodData).length 
         for ( var i = 0; i< foodItemCount; i++){
             var foodItem = Object.keys(userFoodData)[i];
-            populateSelectedItemsDiv(userFoodData[foodItem])
+            populateSelectedItemsDiv(userFoodData[foodItem],i + 1)
         }
     }
 })
