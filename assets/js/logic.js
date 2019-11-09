@@ -24,24 +24,43 @@ var userData={}
 var todaysDate = getDate(0,"YYYYMMDD")
 
 var dailyProteins
-var dailyRecProtiens
-var dailyRemProtiens = dailyRecProtiens - dailyProteins
-var dailyProtiensPercent = (dailyProteins / dailyRecProtiens) * 100
-var dailyProtiensPercentLeft = (100 - dailyProtiensPercent)
-
-
+var dailyRecProteins
+var dailyRemProteins
+function subtractProPerc() {
+    dailyRemProteins = (dailyRecProteins - dailyProteins)
+}
+var dailyProteinsPercent
+var dailyProteinsPercentLeft
+function calcProPercents() {
+    dailyProteinsPercent = (dailyProteins / dailyRecProteins) * 100
+    dailyProteinsPercentLeft = 100 - dailyProteinsPercent
+}
 
 var dailyFats
 var dailyRecFats
-var dailyRemFats = dailyRecFats - dailyFats
-var dailyFatsPercent = (dailyFats / dailyRecFats) * 100
-var dailyFatsPercentLeft = (100 - dailyFatsPercent)
+var dailyRemFats
+function subtractFatPerc() {
+    dailyRemFats = (dailyRecFats - dailyFats)
+}
+var dailyFatsPercent
+var dailyFatsPercentLeft
+function calcFatPercents() {
+    dailyFatsPercent = (dailyFats / dailyRecFats) * 100
+    dailyFatsPercentLeft = 100 - dailyFatsPercent
+}
 
 var dailyCarbs
 var dailyRecCarbs
-var dailyRemCarbs = (dailyRecCarbs - dailyCarbs)
-var dailyCarbsPercent = (dailyCarbs / dailyRecCarbs) * 100
-var dailyCarbsPercentLeft = (100 - dailyCarbsPercent)
+var dailyRemCarbs
+function subtractCarbsPerc() {
+    dailyRemCarbs = (dailyRecCarbs - dailyCarbs)
+}
+var dailyCarbsPercent
+var dailyCarbsPercentLeft
+function calcCarbsPercents() {
+    dailyCarbsPercent = (dailyCarbs / dailyRecCarbs) * 100
+    dailyCarbsPercentLeft = 100 - dailyCarbsPercent
+}
 
 var dailyCals
 var dailyRecCals = 2000;
@@ -60,14 +79,18 @@ function calcPercents() {
     console.log("dailyCalsPercentLeft: " + dailyCalsPercentLeft)
 }
 
-
-
 // google.charts.load('current', { 'packages': ['corechart'] });
 // google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     subtractCalPerc()
     calcPercents()
+    subtractCarbsPerc()
+    calcCarbsPercents()
+    subtractFatPerc()
+    calcFatPercents()
+    subtractProPerc()
+    calcProPercents()
     var calData = new google.visualization.DataTable();
     calData.addColumn('string', 'Calories Eaten Today');
     calData.addColumn('number', 'Calories Left for Today');
@@ -76,25 +99,25 @@ function drawChart() {
         ['calories left', dailyCalsPercentLeft]
     ]);
     var fatData = new google.visualization.DataTable();
-    fatData.addColumn('string', 'Calories Eaten Today');
-    fatData.addColumn('number', 'Calories Left for Today');
+    fatData.addColumn('string', 'Fat Eaten Today');
+    fatData.addColumn('number', 'Fat Left for Today');
     fatData.addRows([
-        ['Fat Intake', 50],
-        ['Fat Intake left', 50]
+        ['Fat Intake', dailyFatsPercent],
+        ['Fat Intake left', dailyFatsPercentLeft]
     ]);
     var proData = new google.visualization.DataTable();
-    proData.addColumn('string', 'Calories Eaten Today');
-    proData.addColumn('number', 'Calories Left for Today');
+    proData.addColumn('string', 'Protein Eaten Today');
+    proData.addColumn('number', 'Protein Left for Today');
     proData.addRows([
-        ['Protein Intake', 50],
-        ['Protein Intake Left', 50]
+        ['Protein Intake', dailyProteinsPercent],
+        ['Protein Intake Left', dailyProteinsPercentLeft]
     ]);
     var carbData = new google.visualization.DataTable();
-    carbData.addColumn('string', 'Calories Eaten Today');
-    carbData.addColumn('number', 'Calories Left for Today');
+    carbData.addColumn('string', 'Carbs Eaten Today');
+    carbData.addColumn('number', 'Carbs Left for Today');
     carbData.addRows([
-        ['Carbohydrate Intake', 50],
-        ['Carbohydrate Intake Left', 50]
+        ['Carbohydrate Intake', dailyCarbsPercent],
+        ['Carbohydrate Intake Left', dailyCarbsPercentLeft]
     ]);
     var options = {
         backgroundColor: 'transparent',
@@ -112,9 +135,21 @@ function drawChart() {
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+    // var fatChart = new google.visualization.PieChart(document.getElementById('donut-fat'));
+    // var proChart = new google.visualization.PieChart(document.getElementById('donut-pro'));
+    // var carbChart = new google.visualization.PieChart(document.getElementById('donut-carbs'));
+    
     chart.draw(calData, options);
+    // fatChart.draw(fatData, options);
+    // proChart.draw(proData, options);
+    // carbChart.draw(carbData, options);
+
 
     $("#donut_single").toggleClass("rotate-in-center");
+    $("#donut-fat").toggleClass("rotate-in-center");
+    $("#donut-pro").toggleClass("rotate-in-center");
+    $("#donut-carbs").toggleClass("rotate-in-center");
+
 
 }
 
@@ -124,15 +159,10 @@ function drawChart() {
 //     options: options
 // });
 
-
-
-
 //This function returns date values or days from the given properties
 function getDate(dayOffset, format) {
     return moment().add(dayOffset, "day").format(format)
 }
-
-
 
 function populateFoodItems(objFood) {
     //clear items returned by search
@@ -352,6 +382,13 @@ function attachUserEventListener(){
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
         // Make additional chart calls for each of the macros
+        function roundNumber() {
+            dailyCals = Math.floor(dailyCals);
+            dailyCalsPercent = Math.floor(dailyCalsPercent);
+        }
+        roundNumber()
+        console.log("Rounded Result: " + dailyCals)
+        $("#percentage-to-goal").text(dailyCalsPercent);
         $("#calories-eaten").text(dailyCals);
         // console.log(getDataAttr("nf_sugars"))
     })
@@ -379,16 +416,16 @@ function attachUserEventListener(){
 $("#submit2").on("click", function(){
     userWeight = $("#user-weight-input").val(); // User's weight in lbs    
     database.ref(userName).update({userWeight: userWeight})
-    dailyRecProtiens = (userWeight * .7)   // Needs to be 70% of user weight in grams
+    dailyRecProteins = (userWeight * .7)   // Needs to be 70% of user weight in grams
     dailyRecFats = (userWeight * .25)  // Needs to be 25% of user weight in grams
-    dailyRecCarbs  = (userWeight - dailyRecProtiens - dailyRecFats); // Remainder intake from the other two macros
+    dailyRecCarbs  = (userWeight - dailyRecProteins - dailyRecFats); // Remainder intake from the other two macros
     dailyRecCals = 2000    // This is also pre-set but may be adjusted by the user.
     console.log("THIS FUCNTION IS GETTING CALLED")
     database.ref(userName + "/analytics").update(
         {dailyRecCals: dailyRecCals,
         dailyRecCarbs: dailyRecCarbs,
         dailyRecFats: dailyRecFats,
-        dailyRecProtiens: dailyRecProtiens
+        dailyRecProteins: dailyRecProteins
         })
 });
 
@@ -404,7 +441,7 @@ $("#submit2").on("click", function(){
 // var dailyRecCalIntake = 2000    // This is also pre-set but may be adjusted by the user.
 
 //  Needs to take one day's worth of food intake from Firebase (within 20191106/Foods) and calculates 
-//  the number of calories, protiens, fat, and carbs eaten that day.
+//  the number of calories, Proteins, fat, and carbs eaten that day.
 //  To Do Items:
 //  item1Pro + item2Pro + item3Pro = todaysProIntake
 //  item1Fat + item2Fat + item3Fat = todaysFatIntake
