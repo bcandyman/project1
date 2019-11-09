@@ -328,6 +328,8 @@ function attachUserEventListener() {
         dailyProteins = getDataAttr("nf_protein", todaysDate)
         console.log("dailyProteins: " + dailyProteins)
 
+        $("#total-calories").text(Math.round(getDataAttr("nf_calories", todaysDate)))
+        console.log(getDataAttr("nf_calories", todaysDate))
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
 
