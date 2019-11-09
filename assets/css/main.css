@@ -272,6 +272,15 @@ align-items:flex-end;
 
 }
 
+.donut-box2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+
+}
+
 .weekly-container{
     display: flex;
     flex-direction: row;

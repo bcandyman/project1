@@ -13,37 +13,107 @@ var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
 var itemsToDatabase = []
-var userName = "Lakshdeep"
+var userName = "Lakshdeep2"
 var foodItemIndex = 0
 
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-var userDatabase
-var userData = {}
-var todaysDate = getDate(0, "YYYYMMDD")
+var userDatabase 
+var userData={}
+var todaysDate = getDate(0,"YYYYMMDD")
 
-var dailyWaters = 1
-var dailyCarbs = 1
-var dailyFats = 1
-var dailyFibers = 1
-var dailyProteins = 1
+var dailyProteins
+var dailyRecProteins
+var dailyRemProteins
+function subtractProPerc() {
+    dailyRemProteins = (dailyRecProteins - dailyProteins)
+}
+var dailyProteinsPercent
+var dailyProteinsPercentLeft
+function calcProPercents() {
+    dailyProteinsPercent = (dailyProteins / dailyRecProteins) * 100
+    dailyProteinsPercentLeft = 100 - dailyProteinsPercent
+}
 
+var dailyFats
+var dailyRecFats
+var dailyRemFats
+function subtractFatPerc() {
+    dailyRemFats = (dailyRecFats - dailyFats)
+}
+var dailyFatsPercent
+var dailyFatsPercentLeft
+function calcFatPercents() {
+    dailyFatsPercent = (dailyFats / dailyRecFats) * 100
+    dailyFatsPercentLeft = 100 - dailyFatsPercent
+}
 
-// google.charts.load('current', { 'packages': ['corechart'] });
-// google.charts.setOnLoadCallback(drawChart);
+var dailyCarbs
+var dailyRecCarbs
+var dailyRemCarbs
+function subtractCarbsPerc() {
+    dailyRemCarbs = (dailyRecCarbs - dailyCarbs)
+}
+var dailyCarbsPercent
+var dailyCarbsPercentLeft
+function calcCarbsPercents() {
+    dailyCarbsPercent = (dailyCarbs / dailyRecCarbs) * 100
+    dailyCarbsPercentLeft = 100 - dailyCarbsPercent
+}
+
+var dailyCals
+var dailyRecCals
+var dailyRemCals
+function subtractCalPerc() {
+    dailyRemCals = (dailyRecCals - dailyCals)
+    console.log("Your daily reccomended calorie intake is: " + dailyRecCals + " calories.")
+       
+}
+var dailyCalsPercent
+var dailyCalsPercentLeft
+function calcPercents() {
+    dailyCalsPercent = (dailyCals / dailyRecCals) * 100
+    dailyCalsPercentLeft = 100 - dailyCalsPercent
+}
 
 function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Food', 'Total per Day'],
-        ['Water', dailyWaters],
-        ['Carbs', dailyCarbs],
-        ['Fats', dailyFats],
-        ['Fiber', dailyFibers],
-        ['Proteins', dailyProteins]
+    subtractCalPerc()
+    calcPercents()
+    subtractCarbsPerc()
+    calcCarbsPercents()
+    subtractFatPerc()
+    calcFatPercents()
+    subtractProPerc()
+    calcProPercents()
+    var calData = new google.visualization.DataTable();
+    calData.addColumn('string', 'Calories Eaten Today');
+    calData.addColumn('number', 'Calories Left for Today');
+    calData.addRows([
+        ['calories', dailyCalsPercent],
+        ['calories left', dailyCalsPercentLeft]
     ]);
-
+    var fatData = new google.visualization.DataTable();
+    fatData.addColumn('string', 'Fat Eaten Today');
+    fatData.addColumn('number', 'Fat Left for Today');
+    fatData.addRows([
+        ['Fat Intake', dailyFatsPercent],
+        ['Fat Intake left', dailyFatsPercentLeft]
+    ]);
+    var proData = new google.visualization.DataTable();
+    proData.addColumn('string', 'Protein Eaten Today');
+    proData.addColumn('number', 'Protein Left for Today');
+    proData.addRows([
+        ['Protein Intake', dailyProteinsPercent],
+        ['Protein Intake Left', dailyProteinsPercentLeft]
+    ]);
+    var carbData = new google.visualization.DataTable();
+    carbData.addColumn('string', 'Carbs Eaten Today');
+    carbData.addColumn('number', 'Carbs Left for Today');
+    carbData.addRows([
+        ['Carbohydrate Intake', dailyCarbsPercent],
+        ['Carbohydrate Intake Left', dailyCarbsPercentLeft]
+    ]);
     var options = {
         backgroundColor: 'transparent',
         pieHole: 0.92,
@@ -60,27 +130,28 @@ function drawChart() {
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-    chart.draw(data, options);
+    // var fatChart = new google.visualization.PieChart(document.getElementById('donut-fat'));
+    // var proChart = new google.visualization.PieChart(document.getElementById('donut-pro'));
+    // var carbChart = new google.visualization.PieChart(document.getElementById('donut-carbs'));
+    
+    chart.draw(calData, options);
+    // fatChart.draw(fatData, options);
+    // proChart.draw(proData, options);
+    // carbChart.draw(carbData, options);
+
 
     $("#donut_single").toggleClass("rotate-in-center");
+    $("#donut-fat").toggleClass("rotate-in-center");
+    $("#donut-pro").toggleClass("rotate-in-center");
+    $("#donut-carbs").toggleClass("rotate-in-center");
+
 
 }
-
-// var myDoughnutChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: data,
-//     options: options
-// });
-
-
-
 
 //This function returns date values or days from the given properties
 function getDate(dayOffset, format) {
     return moment().add(dayOffset, "day").format(format)
 }
-
-
 
 function populateFoodItems(objFood) {
     //clear items returned by search
@@ -103,16 +174,12 @@ function populateFoodItems(objFood) {
     }
 }
 
-
-
 function getDataAttr(attr, date) {
-    console.log("date: " + date)
     var int = 0
     var foodObj = userData[date]["Foods"]
 
     for (key in foodObj) {
         if (!isNaN(foodObj[key][attr])) {
-            console.log(foodObj[key][attr])
             int += foodObj[key][attr]
         }
     }
@@ -121,10 +188,14 @@ function getDataAttr(attr, date) {
 
 }
 
+function getAnalyticsDataAttr(attr) {
+    var int = 0
+    var AnalObj = userData["analytics"][attr]
+    return AnalObj
 
+}
 
 function populateSelectedItemsDiv(foodObj) {
-    console.log(foodObj.item_name)
     var newDiv = $("<div>")
     newDiv.addClass("selected-item")
     newDiv.text(foodObj.item_name)
@@ -137,8 +208,6 @@ function populateSelectedItemsDiv(foodObj) {
 
     itemsToDatabase.push(foodObj)
 }
-
-
 
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
@@ -157,13 +226,10 @@ $("#submit").on("click", function () {
         // url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=item_name%2Cnf_calories%2Cnf_total_fat%2Cnf_total_carbohydrate%2Cnf_protein%2Cnf_ingredient_statement&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         method: "GET"
     }).then(function (response) {
-        console.log(response)
         nutritionCallResults = response
         populateFoodItems(nutritionCallResults)
     });
 })
-
-
 
 $(document).on("click", ".searched-item", function () {
 
@@ -173,9 +239,6 @@ $(document).on("click", ".searched-item", function () {
 
     populateSelectedItemsDiv(myFoodItem.fields)
 })
-
-
-
 
 $("#search").on("click", function () {
     $(".selectedFoodItems").empty()
@@ -191,15 +254,6 @@ $("#search").on("click", function () {
     }
 })
 
-
-
-
-
-
-
-
-
-
 $("#close").on("click", function () {
 
     database.ref(userName).off()
@@ -214,11 +268,8 @@ $("#close").on("click", function () {
 
         i++
     })
-    console.log("items to database: " + itemsToDatabase)
     itemsToDatabase = []
 })
-
-
 
 $("#foodSearch").on("keypress", function (event) {
     if (event.keyCode === 13) {
@@ -226,22 +277,15 @@ $("#foodSearch").on("keypress", function (event) {
     }
 })
 
-
-
-
 //print dates on cards
-$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0, "DD"))
-$("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase())
+$("#todayDate").text(getDate(0, "MM") + " | " + getDate(0,"DD"));
+$("#todayWeekdayName").text(getDate(0, "ddd").toUpperCase());
 
-$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1, "DD"))
-$("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase())
+$("#yesterdayDate").text(getDate(-1, "MM") + " | " + getDate(-1,"DD"));
+$("#yesterdayWeekdayName").text(getDate(-1, "ddd").toUpperCase());
 
-$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1, "DD"))
-$("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase())
-
-
-
-
+$("#tomorrowDate").text(getDate(1, "MM") + " | " + getDate(1,"DD"));
+$("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase());
 
 //create user database or set reference if is a returning user
 database.ref().once("value", function (snapshot) {
@@ -253,7 +297,7 @@ database.ref().once("value", function (snapshot) {
                 console.log("Not found")
             }
             else {
-                console.log("Found")
+                console.log("Welcome back, " + userName)
             }
         }
 
@@ -268,65 +312,47 @@ database.ref().once("value", function (snapshot) {
     }
 })
 
-
-
-
 setTimeout(() => {
     attachUserEventListener()
 }, 2000);
 
-
-function attachUserEventListener() {
-    database.ref(userName).on("value", function (snapshot) {
-        userData = snapshot.val()
-
-        console.log(todaysDate)
-
-        dailyWaters = getDataAttr("nf_water_grams", todaysDate)
-        console.log("dailyWaters: " + dailyWaters)
-        dailyCarbs = getDataAttr("nf_total_carbohydrate", todaysDate)
-        console.log("dailyCarbs: " + dailyCarbs)
-        dailyFats = getDataAttr("nf_total_fat", todaysDate)
-        console.log("dailyFats: " + dailyFats)
-        dailyFibers = getDataAttr("nf_dietary_fiber", todaysDate)
-        console.log("dailyFibers: " + dailyFibers)
-        dailyProteins = getDataAttr("nf_protein", todaysDate)
-        console.log("dailyProteins: " + dailyProteins)
-
+function attachUserEventListener(){
+    database.ref(userName).on("value", function(snapshot){
+        userData=snapshot.val()
+        console.log(userData)
+        dailyCarbs = getDataAttr("nf_total_carbohydrate",todaysDate)
+        dailyRecCarbs = getDataAttr("dailyRecCarbs",todaysDate)
+        dailyFats = getDataAttr("nf_total_fat",todaysDate)
+        dailyRecFats = getDataAttr("dailyRecFats",todaysDate)
+        dailyProteins = getDataAttr("nf_protein",todaysDate)
+        dailyRecProteins = getDataAttr("dailyRecProteins",todaysDate)
+        dailyCals = getDataAttr("nf_calories",todaysDate)
+        dailyRecCals = getAnalyticsDataAttr("dailyRecCals")
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
-
-        // console.log(getDataAttr("nf_sugars"))
+        function roundNumber() {
+            dailyCals = Math.floor(dailyCals);
+            dailyCalsPercent = Math.floor(dailyCalsPercent);
+        }
+        roundNumber()
+        console.log("Rounded Result: " + dailyCals)
+        $("#percentage-to-goal").text(dailyCalsPercent);
+        $("#calories-eaten").text(dailyCals);
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// database.ref(userName).set("Date")
-
-// var newArr=[] //= ["dayOne", "dayTwo"]
-// var newObj  = {carb:1, fat:2}
-// var newObj2 = {carb:3,fat:4}
-// newObj = NewObject[Key:"value"]
-// newArr["dayOne"]=newObj
-// newArr["dayTwo"]=newObj2
-// console.log(newArr.dayOne.carb)
-// database.ref(userName).set(newArr)
-
-// console.log("userDatabase")
-// console.log(database.ref("candben/test").value())
+$("#submit2").on("click", function(){
+    userWeight = $("#user-weight-input").val(); // User's weight in lbs    
+    database.ref(userName).update({userWeight: userWeight})
+    dailyRecProteins = (userWeight * .7)   // Needs to be 70% of user weight in grams
+    dailyRecFats = (userWeight * .25)  // Needs to be 25% of user weight in grams
+    dailyRecCarbs  = (userWeight - dailyRecProteins - dailyRecFats); // Remainder intake from the other two macros
+    dailyRecCals = 2000    // This is also pre-set but may be adjusted by the user.
+    console.log("THIS FUCNTION IS GETTING CALLED")
+    database.ref(userName + "/analytics").update(
+        {dailyRecCals: dailyRecCals,
+        dailyRecCarbs: dailyRecCarbs,
+        dailyRecFats: dailyRecFats,
+        dailyRecProteins: dailyRecProteins
+        })
+});

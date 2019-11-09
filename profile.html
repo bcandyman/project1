@@ -20,10 +20,15 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet" />
-    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+    <!-- firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 
     <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
 </head>
@@ -76,8 +81,8 @@
                         <div class="text4">Date of birth</div>
                         <input id="input" class="home_input_field" placeholder="ex: 12-25-1970" />
                         <div class="text4">Current Weight</div>
-                        <input id="input" class="home_input_field" placeholder="optional" /><br />
-                        <br />
+                        <input id="user-weight-input" class="home_input_field" placeholder="optional"><br>
+                        <br>
                         <p></p>
                     </form>
                     <button type="submit" class="btn btn-dark sub-button" id="submit2">
@@ -88,7 +93,12 @@
         </div>
     </div>
 </body>
+
 <script src="assets/js/script.js"></script>
+<<<<<<< HEAD
+<script src="assets/js/logic.js"></script>
+=======
 <script src="assets/js/login.js"></script>
+>>>>>>> 6098eb33d23216b8b2103cb42571280b880b5e36
 
 </html>
