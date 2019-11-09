@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food API Test</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|DM+Serif+Text|Quicksand&display=swap" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+
+    <!-- moment cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+</head>
+
+<body>
+    <div id="background" class="background">
+        <div class="header-container">
+            <p class="title">WAYE</p>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link nav-buttons" href="login.html">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="index.html">Entries</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link nav-buttons" href="profile.html">Profile</a>
+                </li>
+            </ul>
+            <ul class="nav justify-content-center">
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="">Weekly</a>
+                </li>
+                <li class="nav-link nav-buttons">
+                    <a class="text5" href="">Monthly</a>
+                </li>
+            </ul>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            </ol>
+            <div class="carousel-inner ">
+                <div class="carousel-item active">
+                    <div class="carousel-center" id="card" alt="First slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Sunday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card2" alt="Second slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Monday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search2">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card3" alt="Third slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Tuesday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card4" alt="Forth slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Wednesday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card5" alt="Fifth slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Thursday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card6" alt="sixth slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Friday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-center" id="card7" alt="seventh slide">
+                        <div class="front">
+                            <div class="wrapper">
+                                <div class="card-headerx">
+                                    <p class="date">Saturday</p>
+                                </div>
+                                <p class="sign" id="user-sign">TAURUS</p>
+                                <p class="inside" id="horoscope">Even if you're not one hundred percent sure
+                                    of yourself,
+                                    take a leap
+                                    forward today!</p>
+                                <div class="donut-box">
+                                    <p id="donut_single" class="donut"></p>
+                                    <p class="inside-value">385</p>
+                                    <p class="inside-title">Total Calories</p>
+                                    <p class="text2" id="search">ENTRIES</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <input type="text" id="foodSearch" class="search_input" placeholder="Search">
+                            <button type="submit" class="btn btn-dark sub-button" id="submit">Submit</button>
+                            <div class="foodItems">
+                                <div class="selectedFoodItems">
+                                    <!-- div for items that have been selected by the user -->
+                                </div>
+                                <div class="returnedFoodItems">
+                                    <!-- div for items that have been returned by the Ajax call -->
+                                </div>
+                            </div>
+                            <p></p>
+                            <p class="text2" id="close">Close</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-wrapper">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="pre-2" aria-hidden="true"> &#8249</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="pre-2" aria-hidden="true">&#8250</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="assets/js/logic.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
