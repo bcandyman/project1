@@ -8,7 +8,7 @@ var firebaseConfig = {
     messagingSenderId: "346428803689",
     appId: "1:346428803689:web:bd8036633443512c56f0f8",
     measurementId: "G-KLHSX37FDS"
-  };
+};
 var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
@@ -34,62 +34,65 @@ var dailyFibers = 1
 var dailyProteins = 1
 
 
-    // google.charts.load('current', { 'packages': ['corechart'] });
-    // google.charts.setOnLoadCallback(drawChart);
+// google.charts.load('current', { 'packages': ['corechart'] });
+// google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-            ['Food', 'Total per Day'],
-            ['Water', dailyWaters],
-            ['Carbs', dailyCarbs],
-            ['Fats', dailyFats],
-            ['Fiber', dailyFibers],
-            ['Proteins', dailyProteins]
-        ]);
+    var data = google.visualization.arrayToDataTable([
+        ['Food', 'Total per Day'],
+        ['Water', dailyWaters],
+        ['Carbs', dailyCarbs],
+        ['Fats', dailyFats],
+        ['Fiber', dailyFibers],
+        ['Proteins', dailyProteins]
+    ]);
 
-        var options = {
-            backgroundColor: 'transparent',
-            pieHole: 0.92,
-            colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
-            pieSliceBorderColor: "#5A5A5A",
-            outlineColor: "0",
-            pieSliceBorderColor: "transparent",
+    var options = {
+        backgroundColor: 'transparent',
+        pieHole: 0.92,
+        colors: ['#2fc2df', '#DFA006', '#de1b85', '#6c1460', '#f9527a'],
+        pieSliceBorderColor: "#5A5A5A",
+        outlineColor: "0",
+        pieSliceBorderColor: "transparent",
 
-            pieSliceTextStyle: {
-                color: 'none'
-            },
+        pieSliceTextStyle: {
+            color: 'none'
+        },
 
-            legend: 'none'
-        };
+        legend: 'none'
+    };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single', 'donut_single2', 'donut_single3'));
-        chart.draw(data, options);
-    }
+    var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+    chart.draw(data, options);
 
-    // var myDoughnutChart = new Chart(ctx, {
-    //     type: 'doughnut',
-    //     data: data,
-    //     options: options
-    // });
+    $("#donut_single").toggleClass("rotate-in-center");
+
+}
+
+// var myDoughnutChart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: data,
+//     options: options
+// });
 
 
 
 
 //This function returns date values or days from the given properties
-function getDate(dayOffset, format){
-    return moment().add(dayOffset,"day").format(format)
+function getDate(dayOffset, format) {
+    return moment().add(dayOffset, "day").format(format)
 }
 
 
 
-function populateFoodItems(objFood){
+function populateFoodItems(objFood) {
     //clear items returned by search
     $(".returnedFoodItems").find("*").not(".selected-item").empty()
 
     //for each item returned in ajax call
-    for (var i = 0; i < objFood.hits.length; i++){
-    
+    for (var i = 0; i < objFood.hits.length; i++) {
+
         //create div and apply applicable attributes
         var newDiv = $("<div>")
         newDiv.addClass("searched-item")
@@ -106,34 +109,34 @@ function populateFoodItems(objFood){
 
 
 
-function getDataAttr(attr,date){
+function getDataAttr(attr, date) {
     console.log("date: " + date)
     var int = 0
     var foodObj = userData[date]["Foods"]
-    
-    for (key in foodObj){
-        if (!isNaN(foodObj[key][attr])){
+
+    for (key in foodObj) {
+        if (!isNaN(foodObj[key][attr])) {
             console.log(foodObj[key][attr])
             int += foodObj[key][attr]
         }
     }
-    
+
     return int
 
 }
 
 
 
-function populateSelectedItemsDiv(foodObj){
+function populateSelectedItemsDiv(foodObj) {
     console.log(foodObj.item_name)
     var newDiv = $("<div>")
-     newDiv.addClass("selected-item")
-     newDiv.text(foodObj.item_name)
-     newDiv.append($("<hr>"))
+    newDiv.addClass("selected-item")
+    newDiv.text(foodObj.item_name)
+    newDiv.append($("<hr>"))
 
-     //append newly created div to returnedFoodItems class
-     $(".selectedFoodItems").prepend(newDiv)
-     $(".returnedFoodItems").empty()
+    //append newly created div to returnedFoodItems class
+    $(".selectedFoodItems").prepend(newDiv)
+    $(".returnedFoodItems").empty()
 
 
     itemsToDatabase.push(foodObj)
@@ -143,7 +146,7 @@ function populateSelectedItemsDiv(foodObj){
 
 //Runs when getInformation button is clicked
 //Used when the user initiates a new food search
-$("#submit").on("click",function(){
+$("#submit").on("click", function () {
 
     //initialize variables
     //foodSearch = the food string the user desires to search
@@ -152,12 +155,12 @@ $("#submit").on("click",function(){
     $("#foodSearch").val("")
     //numOfResults = the number of items the user would like returned
     var numOfResults = 5
-    
+
     $.ajax({
         url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=*&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         // url: "https://api.nutritionix.com/v1_1/search/" + foodSearch + "?results=0%3A" + numOfResults + "&cal_min=0&cal_max=50000&fields=item_name%2Cnf_calories%2Cnf_total_fat%2Cnf_total_carbohydrate%2Cnf_protein%2Cnf_ingredient_statement&appId=5e176d12&appKey=f76c23b37cb54db25ea370bc5b7a461f",
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response)
         nutritionCallResults = response
         populateFoodItems(nutritionCallResults)
@@ -166,7 +169,7 @@ $("#submit").on("click",function(){
 
 
 
-$(document).on("click", ".searched-item", function(){
+$(document).on("click", ".searched-item", function () {
 
     //retrieve data-searchedfooditem value and set to the item user has clicked in the drop down
     var itemClicked = $(this).attr("data-searchedfooditem")
@@ -178,14 +181,14 @@ $(document).on("click", ".searched-item", function(){
 
 
 
-$("#search").on("click",function(){
+$("#search").on("click", function () {
     $(".selectedFoodItems").empty()
     $(".returnedFoodItems").empty()
 
-    if (todaysDate in userData){
+    if (todaysDate in userData) {
         var userFoodData = userData[todaysDate]["Foods"]
-        var foodItemCount = Object.keys(userFoodData).length 
-        for ( var i = 0; i< foodItemCount; i++){
+        var foodItemCount = Object.keys(userFoodData).length
+        for (var i = 0; i < foodItemCount; i++) {
             var foodItem = Object.keys(userFoodData)[i];
             populateSelectedItemsDiv(userFoodData[foodItem])
         }
@@ -201,28 +204,28 @@ $("#search").on("click",function(){
 
 
 
-$("#close").on("click",function(){
+$("#close").on("click", function () {
 
     database.ref(userName).off()
     database.ref(userName + "/" + todaysDate + "/Foods/").remove()
     attachUserEventListener()
 
     var i = 0
-    itemsToDatabase.forEach(function(){
+    itemsToDatabase.forEach(function () {
         var objValue = itemsToDatabase[i]
-        database.ref(userName + "/" + todaysDate + "/Foods/" + "item-" + (i+1) ).set(objValue)
+        database.ref(userName + "/" + todaysDate + "/Foods/" + "item-" + (i + 1)).set(objValue)
 
 
         i++
     })
     console.log("items to database: " + itemsToDatabase)
-    itemsToDatabase=[]
+    itemsToDatabase = []
 })
 
 
 
-$("#foodSearch").on("keypress", function(event){
-    if (event.keyCode === 13){
+$("#foodSearch").on("keypress", function (event) {
+    if (event.keyCode === 13) {
         $("#submit").click()
     }
 })
@@ -245,26 +248,26 @@ $("#tomorrowWeekdayName").text(getDate(1, "ddd").toUpperCase());
 
 
 //create user database or set reference if is a returning user
-database.ref().once("value", function(snapshot){
+database.ref().once("value", function (snapshot) {
 
     //if user existing in database
-    if(userName in snapshot.val()){
-        for (key in snapshot.child(userName).val()){
-            if (key.indexOf("test")!==-1){
+    if (userName in snapshot.val()) {
+        for (key in snapshot.child(userName).val()) {
+            if (key.indexOf("test") !== -1) {
                 console.log("Not found")
             }
-            else{
+            else {
                 console.log("Found")
             }
-            }
+        }
 
-        userDatabase = database.ref(userName)   
+        userDatabase = database.ref(userName)
 
     }
-    else{
+    else {
         userDatabase = database.ref(userName).set({
             joinDate: todaysDate,
-            analytics:"",
+            analytics: "",
         })
     }
 })
