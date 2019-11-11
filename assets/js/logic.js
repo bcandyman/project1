@@ -13,7 +13,7 @@ var appID = "5e176d12";
 var appKey = "f76c23b37cb54db25ea370bc5b7a461f";
 var nutritionCallResults = {}
 var itemsToDatabase = []
-var userName = "Lakshdeep2"
+var userName = "Chris"
 var foodItemIndex = 0
 
 // initialize firebase
